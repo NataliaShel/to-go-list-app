@@ -1,38 +1,396 @@
+/* src/App.css або src/index.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #447a53; /* Ваш головний зелений фон */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  color: #3b5e4c; /* Темніший зелений для заголовків */
+  margin-bottom: 0.5rem;
+  font-size: 1.75rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.TogoWrapper {
+  background: #f0faf5; /* Світлий фон для обгортки завдань */
+  margin-top: 5rem;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Тінь */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.TogoForm {
+  width: 100%;
+  margin-bottom: 1rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 0.5rem;
+}
+
+.togo-input {
+  outline: none;
+  background: #ffffff;
+  border: 1px solid #3a9a5c; /* Зелена рамка */
+  padding: 0.5rem 1rem;
+  width: 250px;
+  color: #2f4d3c; /* Темний текст */
+  border-radius: 5px 0 0 5px;
+  font-size: 1rem;
+}
+
+.togo-input::placeholder {
+  color: #364f40; /* Темніший плейсхолдер */
+}
+
+.togo-btn {
+  background: #2e603f; /* Основний зелений для кнопок */
+  color: #fff;
+  border: none;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.togo-btn:hover {
+  background: #88c9a1; /* Світліший зелений при наведенні */
+}
+
+.Togo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #c7e9d3; /* Світло-зелений фон елемента завдання */
+  color: #2f4d3c; /* Темний текст елемента завдання */
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.fa-trash {
+  margin-left: 0.75rem;
+}
+
+.incompleted {
+  color: #2f4d3c;
+  cursor: pointer;
+}
+
+.completed {
+  color: #95b3a2;
+  text-decoration: line-through;
+  cursor: pointer;
+}
+
+.edit-icon,
+.delete-icon {
+  cursor: pointer;
+  color: #1c2d24;
+}
+
+/* --- СТИЛІ ДЛЯ АУТЕНТИФІКАЦІЇ --- */
+
+.auth-container { /* Або просто .container, або щось схоже */
+    max-width: 800px; /* Ось воно! Обмежує ширину */
+    margin: 0 auto;
+}
+
+
+.auth-card {
+  background-color: #f0faf5;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 420px;
+  animation: fadeInUp 0.6s ease;
+}
+
+.auth-card h2 {
+  margin-bottom: 1.5rem;
+  color: #3b5e4c;
+  font-size: 1.75rem;
+}
+
+.auth-form .form-group {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.auth-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #2f4d3c;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid #3a9a5c;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  color: #2f4d3c;
+  background: #ffffff;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.auth-form input:focus {
+  border-color: #2e603f;
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 0.55rem 1rem;
+  background-color: #2e603f;
   color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1.5rem;
 }
 
-.App-link {
-  color: #61dafb;
+.auth-btn:hover:not(:disabled) {
+  background-color: #88c9a1;
 }
 
-@keyframes App-logo-spin {
+.auth-btn:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #e74c3c;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  text-align: left;
+}
+
+.auth-link {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #2f4d3c;
+}
+
+.auth-link a {
+  color: #2e603f;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.auth-link a:hover {
+  text-decoration: underline;
+}
+
+/* --- СТИЛІ ДЛЯ NAVBAR --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #2e603f;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-links a,
+.navbar-links button {
+  color: white;
+  text-decoration: none;
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-links a:hover,
+.navbar-links button:hover {
+  background-color: #3b5e4c;
+}
+
+.logout-btn {
+  background-color: #e74c3c;
+  border: none;
+}
+
+.logout-btn:hover {
+  background-color: #c0392b;
+}
+
+/* --- Анімація --- */
+@keyframes fadeInUp {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease;
+}
+
+
+.app-navbar {
+    background-color: #3b5e4c; /* Темно-зелений колір, що відповідає вашому фону */
+    padding: 1rem 0; /* Відступи зверху і знизу */
+    color: white; /* Колір тексту білий */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Легка тінь */
+}
+
+.navbar-container {
+    max-width: 1200px; /* Максимальна ширина контейнера */
+    margin: 0 auto; /* Центрування контейнера по горизонталі */
+    display: flex;
+    justify-content: space-between; /* Рознесе елементи (лого і посилання) по краях */
+    align-items: center; /* Вирівнювання по вертикалі */
+    padding: 0 20px; /* Горизонтальні відступи всередині контейнера */
+}
+
+.navbar-brand {
+    font-size: 1.8rem; /* Розмір шрифту для назви/логотипу */
+    font-weight: bold; /* Жирний шрифт */
+    text-decoration: none; /* Прибрати підкреслення */
+    color: white; /* Колір тексту для бренду */
+    transition: color 0.3s ease; /* Плавна зміна кольору при наведенні */
+}
+
+.navbar-brand:hover {
+    color: #f0f0f0; /* Світліший колір при наведенні */
+}
+
+.navbar-links-group {
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Відступ між елементами (посиланнями, кнопками) */
+}
+
+.navbar-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar-link:hover {
+    color: #d0d0d0; /* Світліший колір при наведенні */
+}
+
+.navbar-admin-link {
+    font-weight: bold; /* Адмін-посилання жирним */
+    color: #ffcc00; /* Жовтий колір для адмін-посилання */
+}
+
+.navbar-admin-link:hover {
+    color: #ffe066;
+}
+
+.navbar-user-info {
+    font-size: 0.9rem;
+    color: #a0a0a0; /* Світло-сірий колір для інформації про користувача */
+}
+
+/* -- Стилі для кнопок в Navbar (використовуємо auth-btn та додаємо специфічні) -- */
+
+/* Важливо: переконайтеся, що ваші базові стилі для .auth-btn вже визначені у цьому файлі. */
+/* Приклад базового .auth-btn (якщо його немає або він не відповідає очікуванням): */
+.auth-btn {
+    background-color: #3a9a5c; /* Основний зелений колір */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Для Link, що використовує auth-btn */
+    display: inline-block; /* Для Link, що використовує auth-btn */
+    text-align: center; /* Для Link, що використовує auth-btn */
+}
+
+.auth-btn:hover {
+    background-color: #2f7d4a; /* Темніший зелений при наведенні */
+}
+
+.navbar-logout-btn {
+    background-color: #dc3545; /* Червоний для кнопки виходу */
+}
+
+.navbar-logout-btn:hover {
+    background-color: #c82333; /* Темніший червоний */
+}
+
+.auth-btn-secondary {
+    background-color: #007bff; /* Синій для вторинної кнопки (Зареєструватися) */
+}
+
+.auth-btn-secondary:hover {
+    background-color: #0056b3; /* Темніший синій */
+}
+
+/* -- Медіа-запити для адаптивності на малих екранах (необов'язково, але рекомендовано) -- */
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column; /* Елементи стануть вертикально */
+        align-items: flex-start; /* Вирівнювання по лівому краю */
+    }
+
+    .navbar-links-group {
+        flex-direction: column; /* Посилання також стануть вертикально */
+        align-items: flex-start;
+        width: 100%; /* Займають всю ширину */
+        margin-top: 15px; /* Відступ зверху */
+    }
+
+    .navbar-link,
+    .navbar-user-info,
+    .auth-btn {
+        width: 100%; /* Кнопки та посилання займають всю ширину */
+        text-align: left; /* Текст по лівому краю */
+        padding: 10px 0; /* Відступи */
+    }
+
+    .auth-btn {
+        text-align: center; /* Кнопки залишаються по центру */
+    }
 }

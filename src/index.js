@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { AuthProvider } from './contexts/authContexts/index.jsx'; // Ось тут потрібно додати /index.jsx
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <AuthProvider> {/* Обгортаємо App в AuthProvider */}
+      <App />
+    </AuthProvider> {/* Закриваємо AuthProvider */}
   </React.StrictMode>
 );
 
