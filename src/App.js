@@ -58,7 +58,7 @@ function App() {
           <Route element={<PrivateRoutes />}>
             <Route path="/my-plans" element={<UserPlans />} />
             <Route path="/admin" element={<AdminPanel />} />
-            <Route path="/togo" element={<TogoWrapper />} />
+            <Route path="/home" element={<TogoWrapper />} />
             <Route path="/dashboard" element={<UserPlans />} />
           </Route>
 

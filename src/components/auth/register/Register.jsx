@@ -13,10 +13,9 @@ export const Register = () => {
     const [isRegistering, setIsRegistering] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
-    // If the user is already logged in, redirect them immediately.
-    // This prevents the "Cannot update a component while rendering a different component" error.
+
     if (userLoggedIn) {
-        return <Navigate to={'/dashboard'} replace={true} />; // Redirect to your dashboard or home page
+        return <Navigate to={'/home'} replace={true} />; 
     }
 
     const onSubmit = async (e) => {

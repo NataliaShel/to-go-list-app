@@ -15,7 +15,7 @@ const Login = () => {
 
     // 🔐 Якщо користувач уже увійшов — перенаправити
     if (userLoggedIn) {
-        return <Navigate to="/dashboard" replace={true} />;
+        return <Navigate to="/home" replace={true} />;
     }
 
     const onSubmit = async (e) => {

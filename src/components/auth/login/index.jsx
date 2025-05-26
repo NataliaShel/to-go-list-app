@@ -16,11 +16,11 @@ const Login = () => {
         if(!isSigningIn) {
             setIsSigningIn(true)
             await doSignInWithEmailAndPassword(email, password)
-            // doSendEmailVerification() // Якщо не використовується, можна видалити
+           
         }
     }
 
-    // onGoogleSignIn функція видалена повністю
+ 
 
 
     return (
