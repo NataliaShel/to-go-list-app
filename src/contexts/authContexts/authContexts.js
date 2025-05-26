@@ -1,46 +1,78 @@
-// src/contexts/authContexts/authContexts.js
-import React, { useContext, useState, useEffect } from 'react';
-import { auth } from '../../firebase/firebase'; // Імпортуємо об'єкт auth
-import { onAuthStateChanged } from 'firebase/auth';
-import { doSignInWithEmailAndPassword } from '../../firebase/auth'; // Імпортуємо нову функцію
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import {
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+  getAuth,
+} from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../../firebase/firebase';
 
-const AuthContext = React.createContext();
+const AuthContext = createContext();
 
-export function useAuth() {
-    return useContext(AuthContext);
-}
+export const useAuth = () => useContext(AuthContext);
 
-export function AuthProvider({ children }) {
-    const [currentUser, setCurrentUser] = useState(null);
-    const [userLoggedIn, setUserLoggedIn] = useState(false);
-    const [loading, setLoading] = useState(true);
+export const AuthProvider = ({ children }) => {
+  const auth = getAuth();
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setCurrentUser(user);
-                setUserLoggedIn(true);
-            } else {
-                setCurrentUser(null);
-                setUserLoggedIn(false);
-            }
-            setLoading(false);
-        });
+  const [currentUser, setCurrentUser] = useState(null);
+  const [userRole, setUserRole] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-        return unsubscribe;
-    }, []);
+  // Функція входу — важливо саме signInWithEmailAndPassword
+  const doSignInWithEmailAndPassword = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
-    const value = {
-        currentUser,
-        userLoggedIn,
-        loading,
-        doSignInWithEmailAndPassword, // Надаємо функцію через контекст
-        // Додайте інші функції автентифікації тут, якщо вони є
-    };
+  const doSignOut = () => {
+    return signOut(auth);
+  };
 
-    return (
-        <AuthContext.Provider value={value}>
-            {!loading && children}
-        </AuthContext.Provider>
-    );
-}
+  const fetchUserRole = async (uid) => {
+    try {
+      const userDoc = await getDoc(doc(db, 'users', uid));
+      if (userDoc.exists()) {
+        return userDoc.data().role || 'user';
+      }
+      return 'user';
+    } catch (err) {
+      console.error('Помилка при отриманні ролі користувача:', err);
+      return 'user';
+    }
+  };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        setCurrentUser(user);
+        const role = await fetchUserRole(user.uid);
+        setUserRole(role);
+        setIsAdmin(role === 'admin');
+      } else {
+        setCurrentUser(null);
+        setUserRole(null);
+        setIsAdmin(false);
+      }
+      setLoading(false);
+    });
+
+    return unsubscribe;
+  }, [auth]);
+
+  const value = {
+    currentUser,
+    userRole,
+    isAdmin,
+    userLoggedIn: !!currentUser,
+    loading,
+    doSignInWithEmailAndPassword, // Обов’язково так називати, щоб Login.jsx не міняти
+    doSignOut,
+  };
+
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
+};

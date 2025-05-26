@@ -1,10 +1,7 @@
-// src/firebase/firebase.js
-// Цей файл ініціалізує Firebase і експортує його сервіси (Auth, Firestore).
-
-// Імпортуємо необхідні функції з Firebase SDK
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore"; 
+// firebase.js
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
 
 // Ваша конфігурація веб-додатку Firebase
 // (Ці дані ви отримуєте з консолі Firebase -> Project settings -> Your apps -> Firebase SDK snippet)
@@ -19,8 +16,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
 
-// Експортуємо ініціалізовані сервіси Firebase
-// Це дозволяє іншим файлам імпортувати 'auth' та 'db'
-export const auth = getAuth(app);
-export const db = getFirestore(app);// <-- ДОДАЙТЕ ЦЕЙ РЯДОК!
+export { db, auth };

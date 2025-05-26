@@ -1,52 +1,52 @@
-// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from 'react-router-dom'; // Outlet вже імпортовано
+import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from 'react-router-dom';
+
 import { AuthProvider, useAuth } from './contexts/authContexts/authContexts';
 
-
-// Імпорти компонентів автентифікації
+// Компоненти сторінок
 import Login from './components/auth/login/Login';
 import { Register } from './components/auth/register/Register';
-
-// Імпорти компонентів ToDo функціоналу
-import { TogoWrapper } from './components/TogoWrapper';
-
-// Імпорти компонентів сторінок
 import Home from './pages/Home';
 import TermsAndConditions from './pages/TermsAndConditions';
-import AdminPanel from './pages/AdminPanel';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Contacts from './pages/Contacts';
-import UserPlans from './pages/UserPlans'; // Переконайтеся, що шлях правильний
+import AdminPanel from './pages/AdminPanel';
+import UserPlans from './pages/UserPlans';
+import { TogoWrapper } from './components/TogoWrapper';
 
-// ІМПОРТУЙТЕ NAVBAR СЮДИ
-import Navbar from './components/Navbar'; // Переконайтеся, що шлях правильний до Navbar.jsx
-
-// Імпорти спільних компонентів
+// Спільні компоненти
+import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+
 import './App.css';
 
-// Компонент-обгортка для захищених (приватних) маршрутів
-function PrivateRoutes() {
-  const { userLoggedIn, loading } = useAuth();
+// Компонент для приватних маршрутів
+function PrivateRoutes({ adminOnly = false }) {
+  const { userLoggedIn, loading, isAdmin } = useAuth();
 
   if (loading) {
     return <div className="loading-spinner">Завантаження...</div>;
   }
 
-  return userLoggedIn ? <Outlet /> : <Navigate to="/login" replace />;
-}
+  if (!userLoggedIn) {
+    return <Navigate to="/login" replace />;
+  }
 
+  if (adminOnly && !isAdmin) {
+    return <Navigate to="/" replace />;
+  }
+
+  return <Outlet />;
+}
 
 function App() {
   return (
     <Router>
       <AuthProvider>
-        {/* Додаємо Navbar, щоб він відображався на всіх сторінках */}
         <Navbar />
 
         <Routes>
-          {/* Публічні маршрути */}
+          {/* Публічні сторінки */}
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -54,17 +54,22 @@ function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/contacts" element={<Contacts />} />
 
-          {/* Захищені (приватні) маршрути */}
+          {/* Приватні маршрути для будь-якого залогіненого користувача */}
           <Route element={<PrivateRoutes />}>
             <Route path="/my-plans" element={<UserPlans />} />
-            <Route path="/admin" element={<AdminPanel />} />
-            <Route path="/home" element={<TogoWrapper />} />
             <Route path="/dashboard" element={<UserPlans />} />
+            <Route path="/home" element={<TogoWrapper />} />
           </Route>
 
-          {/* Маршрут для неіснуючих сторінок (404) */}
+          {/* Приватний маршрут лише для адміністраторів */}
+          <Route element={<PrivateRoutes adminOnly={true} />}>
+            <Route path="/admin" element={<AdminPanel />} />
+          </Route>
+
+          {/* Якщо маршрут не знайдено, редірект на головну */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+
         <Footer />
       </AuthProvider>
     </Router>

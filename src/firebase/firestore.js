@@ -1,95 +1,78 @@
-// src/firebase/firestore.js
-import { db } from './firebase';
-import { collection, getDocs, doc, addDoc, deleteDoc, query, orderBy, where } from 'firebase/firestore';
+import {
+  collection,
+  getDocs,
+  doc,
+  addDoc,
+  deleteDoc,
+  updateDoc,
+  query,
+  orderBy,
+  where,
+  getDoc,
+} from 'firebase/firestore';
 
-/**
- * Отримує всі документи з колекції користувачів у Firestore.
- * Використовується AdminPanel.
- * @returns {Array} Масив об'єктів користувачів, кожен з яких містить 'id' (UID) та інші дані.
- */
+import { db } from './firebase'; // Має бути правильно налаштований export { db } у firebase.js
+
+// 🔹 Отримати всіх користувачів
 export const getAllUsersData = async () => {
-    try {
-        const usersCollectionRef = collection(db, 'user');
-        const querySnapshot = await getDocs(usersCollectionRef);
+  const usersRef = collection(db, 'users');
+  const q = query(usersRef, orderBy('createdAt', 'desc'));
+  const snapshot = await getDocs(q);
 
-        const users = [];
-        querySnapshot.forEach((doc) => {
-            users.push({
-                id: doc.id,
-                ...doc.data()
-            });
-        });
-        return users;
-    } catch (error) {
-        console.error("Помилка при отриманні даних користувачів з Firestore:", error);
-        throw error;
-    }
+  const users = [];
+  snapshot.forEach((doc) => {
+    users.push({ id: doc.id, ...doc.data() });
+  });
+
+  return users;
 };
 
-/**
- * Додає новий план на глобальному рівні (не в підколекції).
- * @param {string} userId - UID користувача.
- * @param {object} planData - Об'єкт з даними плану.
- * @returns {string} ID новоствореного документа плану.
- */
-export const addPlanner = async (userId, planData) => {
-    try {
-        const plannersCollectionRef = collection(db, 'planners');
-        const docRef = await addDoc(plannersCollectionRef, {
-            ...planData,
-            userId,
-            createdAt: new Date()
-        });
-        return docRef.id;
-    } catch (error) {
-        console.error("Помилка при додаванні плану:", error);
-        throw error;
+// 🔹 Отримати конкретного користувача за UID
+export const getUserDataById = async (uid) => {
+  try {
+    const userRef = doc(db, 'users', uid);
+    const userSnap = await getDoc(userRef);
+    if (userSnap.exists()) {
+      return userSnap.data();
+    } else {
+      console.warn(`❗ Користувача з ID ${uid} не знайдено`);
+      return null;
     }
+  } catch (error) {
+    console.error('❌ Помилка при отриманні даних користувача:', error);
+    throw error;
+  }
 };
 
-/**
- * Отримує всі плани з глобальної колекції planners для конкретного користувача.
- * @param {string} userId - UID користувача.
- * @returns {Array} Масив об'єктів планів.
- */
+// 🔹 Оновити дані користувача
+export const updateUserData = async (uid, data) => {
+  const userRef = doc(db, 'users', uid);
+  await updateDoc(userRef, data);
+};
+
+// 🔸 Отримати плани користувача
 export const getPlannersByUserId = async (userId) => {
-    try {
-        const plannersCollectionRef = collection(db, 'planners');
-        const q = query(plannersCollectionRef, where("userId", "==", userId));
-        const querySnapshot = await getDocs(q);
-        console.log('Кількість планів користувача ${userId}:', querySnapshot.size);
-        const planners = [];
-        querySnapshot.forEach((doc) => {
-            planners.push({
-                id: doc.id,
-                ...doc.data()
-            });
-        });
-
-        // Локальне сортування за createdAt (якщо є)
-        planners.sort((a, b) => {
-            const dateA = a.createdAt?.toDate?.() ?? new Date(0);
-            const dateB = b.createdAt?.toDate?.() ?? new Date(0);
-            return dateB - dateA; // від новіших до старіших
-        });
-
-        return planners;
-    } catch (error) {
-        console.error('Помилка при отриманні планів для користувача ${userId}:', error);
-        throw error;
-    }
+  const plannersRef = collection(db, 'planners');
+  const q = query(plannersRef, where('userId', '==', userId), orderBy('createdAt', 'desc'));
+  const snapshot = await getDocs(q);
+  return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 };
 
-/**
- * Видаляє план за його ID з глобальної колекції planners.
- * @param {string} plannerId - ID документа плану.
- */
-export const deletePlanner = async (plannerId) => {
-    try {
-        const plannerDocRef = doc(db, 'planners', plannerId);
-        await deleteDoc(plannerDocRef);
-    } catch (error) {
-        console.error(`Помилка при видаленні плану ${plannerId}:`, error);
-        throw error;
-    }
+// 🔸 Додати новий план
+export const addPlanner = async (planner) => {
+  const plannersRef = collection(db, 'planners');
+  const docRef = await addDoc(plannersRef, planner);
+  return docRef.id;
+};
+
+// 🔸 Оновити план
+export const updatePlanner = async (id, updatedData) => {
+  const plannerRef = doc(db, 'planners', id);
+  await updateDoc(plannerRef, updatedData);
+};
+
+// 🔸 Видалити план
+export const deletePlanner = async (id) => {
+  const plannerRef = doc(db, 'planners', id);
+  await deleteDoc(plannerRef);
 };
