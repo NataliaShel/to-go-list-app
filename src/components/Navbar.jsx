@@ -26,29 +26,28 @@ const Navbar = () => {
           padding: '0 1rem',
         }}
       >
-        {/* Логотип зліва */}
+       
         <Link to="/" className="navbar-brand">
           TO GO LIST
         </Link>
 
-        {/* Посилання та кнопки праворуч */}
         <div
           className="navbar-links"
           style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}
         >
           {!loading && userLoggedIn ? (
             <>
-              {/* Привітання з email користувача */}
+
               <span className="navbar-user">Привіт, {currentUser?.email}</span>
 
-              {/* Кнопка Вийти */}
+            
               <button onClick={handleLogout} className="logout-button">
                 Вийти
               </button>
             </>
           ) : (
             <>
-              {/* Якщо не залогінений — показуємо кнопки Логін і Реєстрація */}
+       
               <Link to="/login" className="auth-btn">
                 Увійти
               </Link>

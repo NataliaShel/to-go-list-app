@@ -32,7 +32,7 @@ function App() {
       <AuthProvider>
         <Navbar />
         
-        {/* Ось тут додаємо відступ, щоб Navbar не перекривав контент */}
+        
         <div style={{ paddingTop: '72px' }}>
           <Routes>
             <Route path="/" element={<Home />} />

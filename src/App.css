@@ -13,10 +13,9 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  font-size: 18px; /* збільшено базовий розмір шрифту */
+  font-size: 18px; 
 }
 
-/* Navbar */
 .navbar {
   position: fixed;
   top: 0;
@@ -58,7 +57,7 @@ body {
   display: flex;
   align-items: center;
   gap: 25px;
-  margin-left: 3rem; /* 👉 додаємо відстань між логотипом і кнопками */
+  margin-left: 3rem;
 }
 
 .navbar-links-group {

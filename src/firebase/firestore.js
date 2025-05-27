@@ -32,11 +32,11 @@ export const getUserDataById = async (uid) => {
     if (userSnap.exists()) {
       return userSnap.data();
     } else {
-      console.warn(`❗ Користувача з ID ${uid} не знайдено`);
+      console.warn(` Користувача з ID ${uid} не знайдено`);
       return null;
     }
   } catch (error) {
-    console.error('❌ Помилка при отриманні даних користувача:', error);
+    console.error(' Помилка при отриманні даних користувача:', error);
     throw error;
   }
 };
