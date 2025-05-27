@@ -1,4 +1,3 @@
-// src/pages/Contacts.jsx
 import React from 'react';
 import InfoPageWrapper from '../components/InfoPageWrapper';
 

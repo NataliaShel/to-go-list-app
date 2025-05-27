@@ -1,4 +1,3 @@
-// src/pages/PrivacyPolicy.jsx
 import React from 'react';
 import InfoPageWrapper from '../components/InfoPageWrapper';
 
@@ -11,7 +10,6 @@ const PrivacyPolicy = () => (
     <p className="mb-4">
       Ми збираємо інформацію, яку Ви надаєте нам безпосередньо, наприклад, коли Ви створюєте обліковий запис...
     </p>
-    {/* Додайте інші секції політики за потреби */}
   </InfoPageWrapper>
 );
 

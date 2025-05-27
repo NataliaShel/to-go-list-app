@@ -15,7 +15,6 @@ export const TogoWrapper = () => {
   const [togos, setTogos] = useState([]);
   const { currentUser, userLoggedIn } = useAuth();
 
-  // Завантаження тасків з Firestore
   useEffect(() => {
     const fetchPlanners = async () => {
       if (userLoggedIn && currentUser && currentUser.uid) {
@@ -37,22 +36,23 @@ export const TogoWrapper = () => {
     fetchPlanners();
   }, [userLoggedIn, currentUser]);
 
-  // Додавання таски
   const addTogo = async (taskText) => {
+    const tempId = uuidv4();
     const newTogo = {
-      id: uuidv4(),
+      id: tempId,
       task: taskText,
       completed: false,
       isEditing: false,
     };
     setTogos(prev => [...prev, newTogo]);
 
-    // Збереження у Firestore
     try {
+
       const plannerId = await addPlanner(currentUser.uid, { name: taskText, completed: false });
+
       setTogos(prev =>
         prev.map(togo =>
-          togo.id === newTogo.id ? { ...togo, id: plannerId } : togo
+          togo.id === tempId ? { ...togo, id: plannerId } : togo
         )
       );
     } catch (error) {
@@ -60,7 +60,6 @@ export const TogoWrapper = () => {
     }
   };
 
-  // Перемикання виконання
   const toggleComplete = async (id) => {
     const togo = togos.find(t => t.id === id);
     if (!togo) return;
@@ -79,7 +78,6 @@ export const TogoWrapper = () => {
     }
   };
 
-  // Видалення
   const deleteTogo = async (id) => {
     try {
       await deletePlanner(id);
@@ -89,8 +87,7 @@ export const TogoWrapper = () => {
     }
   };
 
-  // Ввімкнення/вимкнення режиму редагування
-  const editTogo = id => {
+  const editTogo = (id) => {
     setTogos(prev =>
       prev.map(togo =>
         togo.id === id ? { ...togo, isEditing: !togo.isEditing } : togo
@@ -98,7 +95,6 @@ export const TogoWrapper = () => {
     );
   };
 
-  // Редагування тексту таски
   const editTask = async (newTaskText, id) => {
     try {
       await updatePlanner(id, { name: newTaskText });

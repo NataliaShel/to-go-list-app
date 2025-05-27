@@ -22,7 +22,7 @@ const Login = () => {
 
     try {
       await doSignInWithEmailAndPassword(email, password);
-      navigate('/home'); // Після успішного входу перекидаємо
+      navigate('/home'); 
     } catch (error) {
       console.error('Помилка входу:', error);
       switch (error.code) {

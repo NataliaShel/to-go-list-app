@@ -1,4 +1,3 @@
-// UserPlans.jsx
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../contexts/authContexts';
 import { getPlannersByUserId} from '../firebase/firestore'
@@ -12,16 +11,16 @@ function UserPlans() {
   useEffect(() => {
     const fetchPlanners = async () => {
       if (userLoggedIn && currentUser && currentUser.uid) {
-        console.log("User is logged in and UID is available:", currentUser.uid); // *** ДОДАНО ***
+        console.log("User is logged in and UID is available:", currentUser.uid); 
         setLoadingPlans(true);
         setErrorLoadingPlans(null);
         try {
-          console.log("Calling getPlannersByUserId with UID:", currentUser.uid); // *** ДОДАНО ***
+          console.log("Calling getPlannersByUserId with UID:", currentUser.uid); 
           const userPlanners = await getPlannersByUserId(currentUser.uid);
-          console.log("Отримано плани з Firestore:", userPlanners); // *** ДОДАНО ***
+          console.log("Отримано плани з Firestore:", userPlanners); 
           setPlanners(userPlanners);
         } catch (error) {
-          console.error("Помилка завантаження планів з Firestore:", error); // *** ДОДАНО ***
+          console.error("Помилка завантаження планів з Firestore:", error); 
           setErrorLoadingPlans("Не вдалося завантажити плани. Спробуйте пізніше.");
         } finally {
           setLoadingPlans(false);
@@ -34,9 +33,7 @@ function UserPlans() {
     };
 
     fetchPlanners();
-  }, [userLoggedIn, currentUser]); // Залежності, щоб ефект спрацьовував при зміні стану
-
-  // ... решта вашого компонента, що відображає плани
+  }, [userLoggedIn, currentUser]); 
   if (loadingPlans) return <div>Завантаження планів...</div>;
   if (errorLoadingPlans) return <div>Помилка: {errorLoadingPlans}</div>;
   if (planners.length === 0) return <div>Планів поки що немає.</div>;

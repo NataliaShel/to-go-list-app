@@ -1,6 +1,5 @@
-// src/components/InfoPageWrapper.jsx
 import React from 'react';
-import '../App.css'; // на всякий випадок, якщо ще не підключено
+import '../App.css';
 
 const InfoPageWrapper = ({ title, children }) => (
   <div className="auth-container">

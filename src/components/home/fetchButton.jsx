@@ -34,7 +34,7 @@ const FetchUserPlansButton = () => {
       </button>
       <ul>
         {plans.map(plan => (
-          <li key={plan.id}>{plan.name}</li> // Припускаємо, що у plan є поле name
+          <li key={plan.id}>{plan.name}</li> 
         ))}
       </ul>
     </div>

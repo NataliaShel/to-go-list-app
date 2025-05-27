@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/authContexts';
 
 const Navbar = () => {
-  const { userLoggedIn, currentUser, isAdmin, doSignOut, loading } = useAuth();
+  const { userLoggedIn, currentUser, doSignOut, loading } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -23,7 +23,7 @@ const Navbar = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          padding: '0 1rem'  // за бажанням, щоб був відступ по боках
+          padding: '0 1rem',
         }}
       >
         {/* Логотип зліва */}
@@ -31,29 +31,24 @@ const Navbar = () => {
           TO GO LIST
         </Link>
 
-        {/* Вміст праворуч */}
+        {/* Посилання та кнопки праворуч */}
         <div
           className="navbar-links"
           style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}
         >
           {!loading && userLoggedIn ? (
             <>
-              {isAdmin && (
-                <Link
-                  to="/admin"
-                  className="navbar-link"
-                  style={{ fontWeight: 'bold', color: 'green' }}
-                >
-                  Адмін-панель
-                </Link>
-              )}
+              {/* Привітання з email користувача */}
               <span className="navbar-user">Привіт, {currentUser?.email}</span>
+
+              {/* Кнопка Вийти */}
               <button onClick={handleLogout} className="logout-button">
                 Вийти
               </button>
             </>
           ) : (
             <>
+              {/* Якщо не залогінений — показуємо кнопки Логін і Реєстрація */}
               <Link to="/login" className="auth-btn">
                 Увійти
               </Link>

@@ -1,9 +1,8 @@
-// src/components/auth/register/Register.jsx
 import React, { useState } from 'react';
-import { Navigate, Link } from 'react-router-dom'; // Import Navigate
-import { useAuth } from '../../../contexts/authContexts'; // Adjust path as needed
-import { db } from '../../../firebase/firebase'; // Assuming you need db for adding user roles
-import { doc, setDoc } from 'firebase/firestore'; // Import setDoc for adding user document
+import { Navigate, Link } from 'react-router-dom'; 
+import { useAuth } from '../../../contexts/authContexts'; 
+import { db } from '../../../firebase/firebase'; 
+import { doc, setDoc } from 'firebase/firestore'; 
 
 export const Register = () => {
     const { userLoggedIn, doCreateUserWithEmailAndPassword } = useAuth();
@@ -20,8 +19,7 @@ export const Register = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        setErrorMessage(''); // Clear previous errors
-
+        setErrorMessage(''); 
         if (password !== confirmPassword) {
             setErrorMessage('Паролі не співпадають!');
             return;
@@ -33,16 +31,15 @@ export const Register = () => {
                 const userCredential = await doCreateUserWithEmailAndPassword(email, password);
                 const user = userCredential.user;
 
-                // Add user document to Firestore with default role 'user'
                 await setDoc(doc(db, 'user', user.uid), {
                     email: user.email,
-                    role: 'user', // Default role for new registrations
+                    role: 'user', 
                     createdAt: new Date()
                 });
 
-                // navigate('/dashboard'); // You might not need this line if <Navigate> in if (userLoggedIn) handles it
+               
             } catch (error) {
-                setIsRegistering(false); // Allow re-submission
+                setIsRegistering(false); 
                 switch (error.code) {
                     case 'auth/email-already-in-use':
                         setErrorMessage('Цей email вже використовується.');

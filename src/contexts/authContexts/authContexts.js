@@ -1,78 +1,83 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { auth } from "../../firebase/firebase";
 import {
-  onAuthStateChanged,
+  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  getAuth,
-} from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from '../../firebase/firebase';
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup,
+  sendPasswordResetEmail,
+  updatePassword,
+  sendEmailVerification,
+} from "firebase/auth";
 
 const AuthContext = createContext();
 
-export const useAuth = () => useContext(AuthContext);
+export function useAuth() {
+  return useContext(AuthContext);
+}
 
-export const AuthProvider = ({ children }) => {
-  const auth = getAuth();
-
+export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
-  const [userRole, setUserRole] = useState(null);
-  const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // Функція входу — важливо саме signInWithEmailAndPassword
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+      setLoading(false);
+    });
+    return unsubscribe;
+  }, []);
+
+  const doCreateUserWithEmailAndPassword = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+
   const doSignInWithEmailAndPassword = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  const doSignInWithGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    return signInWithPopup(auth, provider);
   };
 
   const doSignOut = () => {
     return signOut(auth);
   };
 
-  const fetchUserRole = async (uid) => {
-    try {
-      const userDoc = await getDoc(doc(db, 'users', uid));
-      if (userDoc.exists()) {
-        return userDoc.data().role || 'user';
-      }
-      return 'user';
-    } catch (err) {
-      console.error('Помилка при отриманні ролі користувача:', err);
-      return 'user';
-    }
+  const doPasswordReset = (email) => {
+    return sendPasswordResetEmail(auth, email);
   };
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        setCurrentUser(user);
-        const role = await fetchUserRole(user.uid);
-        setUserRole(role);
-        setIsAdmin(role === 'admin');
-      } else {
-        setCurrentUser(null);
-        setUserRole(null);
-        setIsAdmin(false);
-      }
-      setLoading(false);
-    });
 
-    return unsubscribe;
-  }, [auth]);
+  const doUpdatePassword = (newPassword) => {
+    if (!auth.currentUser) {
+      return Promise.reject(new Error("User not logged in"));
+    }
+    return updatePassword(auth.currentUser, newPassword);
+  };
+
+  const doSendEmailVerification = () => {
+    if (!auth.currentUser) {
+      return Promise.reject(new Error("User not logged in"));
+    }
+    return sendEmailVerification(auth.currentUser);
+  };
 
   const value = {
     currentUser,
-    userRole,
-    isAdmin,
-    userLoggedIn: !!currentUser,
     loading,
-    doSignInWithEmailAndPassword, // Обов’язково так називати, щоб Login.jsx не міняти
+    userLoggedIn: !!currentUser,
+    doCreateUserWithEmailAndPassword,
+    doSignInWithEmailAndPassword,
+    doSignInWithGoogle,
     doSignOut,
+    doPasswordReset,
+    doUpdatePassword,
+    doSendEmailVerification,
   };
 
-  return (
-    <AuthContext.Provider value={value}>
-      {!loading && children}
-    </AuthContext.Provider>
-  );
-};
+  return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;
+}

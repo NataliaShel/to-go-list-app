@@ -1,5 +1,3 @@
-/* src/App.css або src/index.css */
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 * {
@@ -10,155 +8,279 @@
 }
 
 body {
-  background: #447a53; /* Ваш головний зелений фон */
+  background: #447a53;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-}
-.navbar {
-  background-color: #f5f5f5;
-  padding: 1rem 2rem;
-  border-bottom: 1px solid #ddd;
+  font-size: 18px; /* збільшено базовий розмір шрифту */
 }
 
-.navbar-container {
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.25rem 2.5rem;
+  background-color: #2e603f;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 1000;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
 }
 
 .navbar-brand {
-  font-size: 1.5rem;
+  font-size: 2.2rem;
   font-weight: bold;
-  color: #333;
   text-decoration: none;
+  color: #ffffff;
+  transition: color 0.3s ease;
 }
 
-.navbar-right {
+.navbar-brand:hover {
+  color: #95f2ae;
+}
+
+.navbar-links,
+.navbar-links-group {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 25px;
+  margin-left: 3rem; /* 👉 додаємо відстань між логотипом і кнопками */
 }
 
-.navbar-user {
-  color: #555;
-  font-size: 1rem;
+.navbar-links-group {
+  gap: 25px;
+}
+
+.navbar-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 10px 16px;
+  border-radius: 6px;
+  background-color: #6a9cfc;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar-link:hover {
+  color: #d0d0d0;
+  background-color: #3b5e4c;
+}
+
+.navbar-admin-link {
+  font-weight: bold;
+  color: #ffcc00;
+}
+
+.navbar-admin-link:hover {
+  color: #ffe066;
+}
+
+.navbar-user,
+.navbar-user-info {
+  font-size: 1.1rem;
+  color: white;
+  margin-right: 10px;
+}
+
+.logout-button,
+.logout-btn,
+.navbar-logout-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
 }
 
 .logout-button {
-  padding: 0.5rem 1rem;
-  background-color: #ff4d4f;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  background-color: white;
+  color: #333;
 }
 
 .logout-button:hover {
   background-color: #d9363e;
+  color: white;
 }
 
-.navbar-brand {
-    color: #a463d3;
-    font-weight: bold;
-    font-size: 20px;
-    text-decoration: none;
+.logout-btn,
+.navbar-logout-btn {
+  background-color: #e74c3c;
+  color: white;
 }
 
-.navbar-links {
-  display: flex;
-  align-items: center;
-  gap: 2rem; /* відстань між елементами */
+.logout-btn:hover,
+.navbar-logout-btn:hover {
+  background-color: #c0392b;
 }
 
-.navbar-link {
-    color: white;
-    text-decoration: none;
-    padding: 6px 10px;
-    border-radius: 6px;
-    background-color: #6a9cfc;
-}
-
-.navbar-user {
-    color: white;
-    margin-right: 10px;
-}
-
-.logout-button {
-    background-color: white;
-    color: #333;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.App {
+/* Buttons */
+.auth-btn,
+.auth-btn-secondary {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  text-decoration: none;
+  display: inline-block;
   text-align: center;
+  transition: background-color 0.3s ease;
 }
 
-h1 {
-  color: #3b5e4c; /* Темніший зелений для заголовків */
-  margin-bottom: 0.5rem;
-  font-size: 1.75rem;
+.auth-btn {
+  background-color: #3a9a5c;
+  color: white;
 }
+
+.auth-btn:hover {
+  background-color: #2f7d4a;
+}
+
+.auth-btn-secondary {
+  background-color: #007bff;
+  color: white;
+}
+
+.auth-btn-secondary:hover {
+  background-color: #0056b3;
+}
+
+.auth-btn:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+}
+
+
+.auth-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.auth-card {
+  background-color: #f0faf5;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(59, 127, 61, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 460px;
+  animation: fadeInUp 0.6s ease;
+}
+
+.auth-card h2 {
+  margin-bottom: 1.5rem;
+  color: #3b5e4c;
+  font-size: 2rem;
+}
+
+.auth-form .form-group {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.auth-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #2f4d3c;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid #3a9a5c;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  color: #2f4d3c;
+  background: #ffffff;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.auth-form input:focus {
+  border-color: #2e603f;
+}
+
 
 .TogoWrapper {
-  background: #f0faf5; /* Світлий фон для обгортки завдань */
-  margin-top: 5rem;
-  padding: 2rem;
+  background: #f0faf5;
+  margin-top: 6rem;
+  padding: 2.5rem;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Тінь */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.TogoWrapper h1 {
+  color: #2e603f; 
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .TogoForm {
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .togo-input {
   outline: none;
   background: #ffffff;
-  border: 1px solid #3a9a5c; /* Зелена рамка */
-  padding: 0.5rem 1rem;
-  width: 250px;
-  color: #2f4d3c; /* Темний текст */
+  border: 1px solid #3a9a5c;
+  padding: 0.75rem 1.25rem;
+  width: 300px;
+  color: #2f4d3c;
   border-radius: 5px 0 0 5px;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 .togo-input::placeholder {
-  color: #364f40; /* Темніший плейсхолдер */
+  color: #364f40;
 }
 
 .togo-btn {
-  background: #2e603f; /* Основний зелений для кнопок */
+  background: #2e603f;
   color: #fff;
   border: none;
-  padding: 0.55rem 1rem;
+  padding: 0.75rem 1.25rem;
   cursor: pointer;
   border-radius: 0 5px 5px 0;
-  font-size: 1rem;
+  font-size: 1.1rem;
   transition: background 0.3s ease;
 }
 
 .togo-btn:hover {
-  background: #88c9a1; /* Світліший зелений при наведенні */
+  background: #88c9a1;
 }
 
 .Togo {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #c7e9d3; /* Світло-зелений фон елемента завдання */
-  color: #2f4d3c; /* Темний текст елемента завдання */
-  padding: 0.75rem 1rem;
+  background: #c7e9d3;
+  color: #2f4d3c;
+  padding: 1rem 1.25rem;
   border-radius: 5px;
   margin-bottom: 1rem;
+  font-size: 1.1rem;
 }
 
 .fa-trash {
@@ -182,155 +304,7 @@ h1 {
   color: #1c2d24;
 }
 
-/* --- СТИЛІ ДЛЯ АУТЕНТИФІКАЦІЇ --- */
 
-.auth-container { /* Або просто .container, або щось схоже */
-    max-width: 800px; /* Ось воно! Обмежує ширину */
-    margin: 0 auto;
-}
-
-
-.auth-card {
-  background-color: #f0faf5;
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: 100%;
-  max-width: 420px;
-  animation: fadeInUp 0.6s ease;
-}
-
-.auth-card h2 {
-  margin-bottom: 1.5rem;
-  color: #3b5e4c;
-  font-size: 1.75rem;
-}
-
-.auth-form .form-group {
-  margin-bottom: 1rem;
-  text-align: left;
-}
-
-.auth-form label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-  color: #2f4d3c;
-}
-
-.auth-form input {
-  width: 100%;
-  padding: 0.5rem 1rem;
-  border: 1px solid #3a9a5c;
-  border-radius: 5px;
-  box-sizing: border-box;
-  font-size: 1rem;
-  color: #2f4d3c;
-  background: #ffffff;
-  outline: none;
-  transition: border-color 0.3s ease;
-}
-
-.auth-form input:focus {
-  border-color: #2e603f;
-}
-
-.auth-btn {
-  width: 100%;
-  padding: 0.55rem 1rem;
-  background-color: #2e603f;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 1.5rem;
-}
-
-.auth-btn:hover:not(:disabled) {
-  background-color: #88c9a1;
-}
-
-.auth-btn:disabled {
-  background-color: #a0a0a0;
-  cursor: not-allowed;
-}
-
-.error-message {
-  color: #e74c3c;
-  margin-top: 0.5rem;
-  font-size: 0.875rem;
-  text-align: left;
-}
-
-.auth-link {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  color: #2f4d3c;
-}
-
-.auth-link a {
-  color: #2e603f;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.auth-link a:hover {
-  text-decoration: underline;
-}
-
-/* --- СТИЛІ ДЛЯ NAVBAR --- */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background-color: #2e603f;
-  color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-}
-
-.navbar-brand {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.navbar-links a,
-.navbar-links button {
-  color: white;
-  text-decoration: none;
-  margin-left: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  background-color: transparent;
-  border: 1px solid transparent;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-.navbar-links a:hover,
-.navbar-links button:hover {
-  background-color: #3b5e4c;
-}
-
-.logout-btn {
-  background-color: #e74c3c;
-  border: none;
-}
-
-.logout-btn:hover {
-  background-color: #c0392b;
-}
-
-/* --- Анімація --- */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -347,127 +321,28 @@ h1 {
 }
 
 
-.app-navbar {
-    background-color: #3b5e4c; /* Темно-зелений колір, що відповідає вашому фону */
-    padding: 1rem 0; /* Відступи зверху і знизу */
-    color: white; /* Колір тексту білий */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Легка тінь */
-}
-
-.navbar-container {
-    max-width: 1200px; /* Максимальна ширина контейнера */
-    margin: 0 auto; /* Центрування контейнера по горизонталі */
-    display: flex;
-    justify-content: space-between; /* Рознесе елементи (лого і посилання) по краях */
-    align-items: center; /* Вирівнювання по вертикалі */
-    padding: 0 20px; /* Горизонтальні відступи всередині контейнера */
-}
-
-.navbar-brand {
-    font-size: 1.8rem; /* Розмір шрифту для назви/логотипу */
-    font-weight: bold; /* Жирний шрифт */
-    text-decoration: none; /* Прибрати підкреслення */
-    color: white; /* Колір тексту для бренду */
-    transition: color 0.3s ease; /* Плавна зміна кольору при наведенні */
-}
-
-.navbar-brand:hover {
-    color: #f0f0f0; /* Світліший колір при наведенні */
-}
-
-.navbar-links-group {
-    display: flex;
-    align-items: center;
-    gap: 25px; /* Відступ між елементами (посиланнями, кнопками) */
-}
-
-.navbar-link {
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.navbar-link:hover {
-    color: #d0d0d0; /* Світліший колір при наведенні */
-}
-
-.navbar-admin-link {
-    font-weight: bold; /* Адмін-посилання жирним */
-    color: #ffcc00; /* Жовтий колір для адмін-посилання */
-}
-
-.navbar-admin-link:hover {
-    color: #ffe066;
-}
-
-.navbar-user-info {
-    font-size: 0.9rem;
-    color: #a0a0a0; /* Світло-сірий колір для інформації про користувача */
-}
-
-/* -- Стилі для кнопок в Navbar (використовуємо auth-btn та додаємо специфічні) -- */
-
-/* Важливо: переконайтеся, що ваші базові стилі для .auth-btn вже визначені у цьому файлі. */
-/* Приклад базового .auth-btn (якщо його немає або він не відповідає очікуванням): */
-.auth-btn {
-    background-color: #3a9a5c; /* Основний зелений колір */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-    text-decoration: none; /* Для Link, що використовує auth-btn */
-    display: inline-block; /* Для Link, що використовує auth-btn */
-    text-align: center; /* Для Link, що використовує auth-btn */
-}
-
-.auth-btn:hover {
-    background-color: #2f7d4a; /* Темніший зелений при наведенні */
-}
-
-.navbar-logout-btn {
-    background-color: #dc3545; /* Червоний для кнопки виходу */
-}
-
-.navbar-logout-btn:hover {
-    background-color: #c82333; /* Темніший червоний */
-}
-
-.auth-btn-secondary {
-    background-color: #007bff; /* Синій для вторинної кнопки (Зареєструватися) */
-}
-
-.auth-btn-secondary:hover {
-    background-color: #0056b3; /* Темніший синій */
-}
-
-/* -- Медіа-запити для адаптивності на малих екранах (необов'язково, але рекомендовано) -- */
 @media (max-width: 768px) {
-    .navbar-container {
-        flex-direction: column; /* Елементи стануть вертикально */
-        align-items: flex-start; /* Вирівнювання по лівому краю */
-    }
+  .navbar-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    .navbar-links-group {
-        flex-direction: column; /* Посилання також стануть вертикально */
-        align-items: flex-start;
-        width: 100%; /* Займають всю ширину */
-        margin-top: 15px; /* Відступ зверху */
-    }
+  .navbar-links-group {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 15px;
+  }
 
-    .navbar-link,
-    .navbar-user-info,
-    .auth-btn {
-        width: 100%; /* Кнопки та посилання займають всю ширину */
-        text-align: left; /* Текст по лівому краю */
-        padding: 10px 0; /* Відступи */
-    }
+  .navbar-link,
+  .navbar-user-info,
+  .auth-btn {
+    width: 100%;
+    text-align: left;
+    padding: 12px 0;
+  }
 
-    .auth-btn {
-        text-align: center; /* Кнопки залишаються по центру */
-    }
+  .auth-btn {
+    text-align: center;
+  }
 }

@@ -8,7 +8,7 @@ const Footer = () => {
         padding: '16px 0',
         marginTop: '2rem',
         textAlign: 'center',
-        color: '#000000',  // чорний колір тексту
+        color: '#000000', 
       }}
     >
       <nav style={{ marginBottom: '16px' }}>
