@@ -4,34 +4,34 @@ import InfoPageWrapper from '../components/InfoPageWrapper';
 const TermsAndConditions = () => {
   console.log('TermsAndConditions rendered!');
   return (
-    <InfoPageWrapper title="Умови використання">
-      <h2 className="text-xl font-semibold mb-2">1. Загальні положення</h2>
+    <InfoPageWrapper title="Terms of Use">
+      <h2 className="text-xl font-semibold mb-2">1. General Provisions</h2>
       <p className="mb-4">
-        Ласкаво просимо до To-Do List App! Ці Умови використання регулюють ваш доступ та використання нашого веб-додатку...
+        Welcome to To-Do List App! These Terms of Use govern your access and use of our web application...
       </p>
 
-      <h2 className="text-xl font-semibold mb-2">2. Обліковий запис користувача</h2>
+      <h2 className="text-xl font-semibold mb-2">2. User Account</h2>
       <p className="mb-4">
-        Для доступу до певних функцій Додатка вам може знадобитися створити обліковий запис...
+        To access certain features of the Application, you may need to create an account...
       </p>
 
-      <h2 className="text-xl font-semibold mb-2">3. Використання Додатка</h2>
+      <h2 className="text-xl font-semibold mb-2">3. Use of the Application</h2>
       <ul className="list-disc pl-5 mb-4">
-        <li>Додаток призначений для особистого, некомерційного використання.</li>
-        <li>Ви погоджуєтеся не використовувати Додаток для незаконних цілей.</li>
-        <li>Заборонено перевантаження або порушення роботи Додатка.</li>
+        <li>The Application is intended for personal, non-commercial use.</li>
+        <li>You agree not to use the Application for illegal purposes.</li>
+        <li>Overloading or disrupting the operation of the Application is prohibited.</li>
       </ul>
 
-      <h2 className="text-xl font-semibold mb-2">4. Відмова від відповідальності</h2>
-      <p className="mb-4">Додаток надається "як є" та "як доступно".</p>
+      <h2 className="text-xl font-semibold mb-2">4. Disclaimer</h2>
+      <p className="mb-4">The Application is provided "as is" and "as available."</p>
 
-      <h2 className="text-xl font-semibold mb-2">5. Зміни до Умов</h2>
+      <h2 className="text-xl font-semibold mb-2">5. Changes to the Terms</h2>
       <p className="mb-4">
-        Ми залишаємо за собою право вносити зміни до цих умов у будь-який час...
+        We reserve the right to make changes to these terms at any time...
       </p>
 
       <p className="text-sm text-center text-gray-500 mt-8">
-        Останнє оновлення: 25 травня 2025 року
+        Last updated: May 25, 2025
       </p>
     </InfoPageWrapper>
   );

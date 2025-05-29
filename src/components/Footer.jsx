@@ -16,22 +16,22 @@ const Footer = () => {
           to="/terms-and-conditions"
           style={{ display: 'block', color: '#fff', margin: '8px 0', textDecoration: 'underline', cursor: 'pointer' }}
         >
-          Умови використання
+          Terms of Use
         </Link>
         <Link
           to="/privacy-policy"
           style={{ display: 'block', color: '#fff', margin: '8px 0', textDecoration: 'underline', cursor: 'pointer' }}
         >
-          Політика конфіденційності
+          Privacy Policy
         </Link>
         <Link
           to="/contacts"
           style={{ display: 'block', color: '#fff', margin: '8px 0', textDecoration: 'underline', cursor: 'pointer' }}
         >
-          Контакти
+          Contacts
         </Link>
       </nav>
-      <p style={{ fontSize: '0.875rem', color: '#fff' }}>© 2025 My App. Всі права захищені.</p>
+      <p style={{ fontSize: '0.875rem', color: '#fff' }}>© 2025 My App. All rights reserved.</p>
     </footer>
   );
 };

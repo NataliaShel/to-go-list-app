@@ -23,7 +23,7 @@ const Navbar = () => {
       await doSignOut();
       navigate('/login');
     } catch (error) {
-      console.error("Помилка при виході:", error);
+      console.error("Error signing out:", error);
     }
   };
 
@@ -39,13 +39,13 @@ const Navbar = () => {
 
           {!loading && userLoggedIn ? (
             <>
-              <span className="navbar-user">Привіт, {currentUser?.email}</span>
-              <button onClick={handleLogout} className="logout-button">Вийти</button>
+              <span className="navbar-user">Hello, {currentUser?.email}</span>
+              <button onClick={handleLogout} className="logout-button">Sign Out</button>
             </>
           ) : (
             <>
-              <Link to="/login" className="auth-btn">Увійти</Link>
-              <Link to="/register" className="auth-btn">Зареєструватися</Link>
+              <Link to="/login" className="auth-btn">LogIn</Link>
+              <Link to="/register" className="auth-btn">Register</Link>
             </>
           )}
         </div>

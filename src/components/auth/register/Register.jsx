@@ -21,7 +21,7 @@ export const Register = () => {
         e.preventDefault();
         setErrorMessage(''); 
         if (password !== confirmPassword) {
-            setErrorMessage('Паролі не співпадають!');
+            setErrorMessage('Passwords do not match!');
             return;
         }
 
@@ -42,19 +42,19 @@ export const Register = () => {
                 setIsRegistering(false); 
                 switch (error.code) {
                     case 'auth/email-already-in-use':
-                        setErrorMessage('Цей email вже використовується.');
+                        setErrorMessage('This email is already in use.');
                         break;
                     case 'auth/invalid-email':
-                        setErrorMessage('Неправильний формат email.');
+                        setErrorMessage('Invalid email format.');
                         break;
                     case 'auth/weak-password':
-                        setErrorMessage('Пароль повинен бути не менше 6 символів.');
+                        setErrorMessage('Password must be at least 6 characters.');
                         break;
                     default:
-                        setErrorMessage(`Помилка реєстрації: ${error.message}`);
+                        setErrorMessage(`Registration error: ${error.message}`);
                         break;
                 }
-                console.error("Помилка реєстрації:", error);
+                console.error("Registration error:", error);
             }
         }
     };
@@ -62,13 +62,13 @@ export const Register = () => {
     return (
         <div className="auth-container">
             <div className="auth-card">
-                <h2>Реєстрація</h2>
+                <h2>Register</h2>
                 <form onSubmit={onSubmit} className="auth-form">
                     <div className="form-group">
-                        <label>Електронна пошта</label>
+                        <label>Email</label>
                         <input
                             type="email"
-                            placeholder="Ваша пошта"
+                            placeholder="Your email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
@@ -76,10 +76,10 @@ export const Register = () => {
                     </div>
 
                     <div className="form-group">
-                        <label>Пароль</label>
+                        <label>Password</label>
                         <input
                             type="password"
-                            placeholder="Мінімум 6 символів"
+                            placeholder="Minimum 6 characters"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
@@ -87,10 +87,10 @@ export const Register = () => {
                     </div>
 
                     <div className="form-group">
-                        <label>Підтвердіть Пароль</label>
+                        <label>Confirm Password</label>
                         <input
                             type="password"
-                            placeholder="Підтвердіть пароль"
+                            placeholder="Confirm password"
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             required
@@ -104,12 +104,12 @@ export const Register = () => {
                         disabled={isRegistering}
                         className="auth-btn"
                     >
-                        {isRegistering ? 'Реєстрація...' : 'Зареєструватися'}
+                        {isRegistering ? 'Registering...' : 'Register'}
                     </button>
                 </form>
 
                 <p className="auth-link">
-                    Вже маєте обліковий запис? <Link to="/login">Увійти</Link>
+                    Already have an account? <Link to="/login">Log In</Link>
                 </p>
             </div>
         </div>

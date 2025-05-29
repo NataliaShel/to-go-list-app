@@ -17,11 +17,11 @@ function UserPlans() {
         try {
           console.log("Calling getPlannersByUserId with UID:", currentUser.uid); 
           const userPlanners = await getPlannersByUserId(currentUser.uid);
-          console.log("Отримано плани з Firestore:", userPlanners); 
+          console.log("Plans received from Firestore:", userPlanners); 
           setPlanners(userPlanners);
         } catch (error) {
-          console.error("Помилка завантаження планів з Firestore:", error); 
-          setErrorLoadingPlans("Не вдалося завантажити плани. Спробуйте пізніше.");
+          console.error("Error loading plans from Firestore:", error); 
+          setErrorLoadingPlans("Failed to load plans. Please try again later.");
         } finally {
           setLoadingPlans(false);
         }
@@ -34,13 +34,13 @@ function UserPlans() {
 
     fetchPlanners();
   }, [userLoggedIn, currentUser]); 
-  if (loadingPlans) return <div>Завантаження планів...</div>;
-  if (errorLoadingPlans) return <div>Помилка: {errorLoadingPlans}</div>;
-  if (planners.length === 0) return <div>Планів поки що немає.</div>;
+  if (loadingPlans) return <div>Loading plans...</div>;
+  if (errorLoadingPlans) return <div>Error: {errorLoadingPlans}</div>;
+  if (planners.length === 0) return <div>No plans yet.</div>;
 
   return (
     <div>
-      <h2>Ваші Плани</h2>
+      <h2>Your Plans</h2>
       <ul>
         {planners.map(planner => (
           <li key={planner.id}>{planner.name}</li>

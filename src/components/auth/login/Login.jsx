@@ -24,18 +24,18 @@ const Login = () => {
       await doSignInWithEmailAndPassword(email, password);
       navigate('/home'); 
     } catch (error) {
-      console.error('Помилка входу:', error);
+      console.error('Login error:', error);
       switch (error.code) {
         case 'auth/user-not-found':
         case 'auth/wrong-password':
         case 'auth/invalid-credential':
-          setErrorMessage('Невірний email або пароль.');
+          setErrorMessage('Invalid email or password.');
           break;
         case 'auth/invalid-email':
-          setErrorMessage('Неправильний формат email.');
+          setErrorMessage('Invalid email format.');
           break;
         default:
-          setErrorMessage('Помилка входу. Спробуйте ще раз.');
+          setErrorMessage('Login error. Please try again.');
       }
     } finally {
       setIsSigningIn(false);
@@ -45,13 +45,13 @@ const Login = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h2>Вхід</h2>
+        <h2>Login</h2>
         <form onSubmit={onSubmit} className="auth-form">
           <div className="form-group">
-            <label>Електронна пошта</label>
+            <label>Email</label>
             <input
               type="email"
-              placeholder="Ваша пошта"
+              placeholder="Your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -59,10 +59,10 @@ const Login = () => {
           </div>
 
           <div className="form-group">
-            <label>Пароль</label>
+            <label>Password</label>
             <input
               type="password"
-              placeholder="Ваш пароль"
+              placeholder="Your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -72,12 +72,12 @@ const Login = () => {
           {errorMessage && <p className="error-message">{errorMessage}</p>}
 
           <button type="submit" disabled={isSigningIn} className="auth-btn">
-            {isSigningIn ? 'Вхід...' : 'Увійти'}
+            {isSigningIn ? 'Logging in...' : 'Log In'}
           </button>
         </form>
 
         <p className="auth-link">
-          Не маєте облікового запису? <Link to="/register">Зареєструватися</Link>
+          Don't have an account? <Link to="/register">Sign Up</Link>
         </p>
       </div>
     </div>

@@ -2,14 +2,14 @@ import React from 'react';
 import InfoPageWrapper from '../components/InfoPageWrapper';
 
 const Contacts = () => (
-  <InfoPageWrapper title="Контакти">
+  <InfoPageWrapper title="Contacts">
     <p className="mb-4">
-      Якщо у вас є запитання або пропозиції, будь ласка, зв'яжіться з нами:
+      If you have any questions or suggestions, please contact us:
     </p>
     <ul className="list-disc pl-5">
-      <li className="mb-2">Електронна пошта: support@yourtodolistapp.com</li>
-      <li className="mb-2">Телефон: +380 XX XXX XX XX</li>
-      <li className="mb-2">Адреса: адреса,  місто, Україна</li>
+      <li className="mb-2">Email: support@yourtodolistapp.com</li>
+      <li className="mb-2">Phone: +380 XX XXX XX XX</li>
+      <li className="mb-2">Address: address, city, Ukraine</li>
     </ul>
   </InfoPageWrapper>
 );
