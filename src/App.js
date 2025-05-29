@@ -31,8 +31,7 @@ function App() {
     <Router>
       <AuthProvider>
         <Navbar />
-        
-        
+
         <div style={{ paddingTop: '72px' }}>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -53,6 +52,5 @@ function App() {
     </Router>
   );
 }
-
 
 export default App;

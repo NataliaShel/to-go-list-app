@@ -17,7 +17,7 @@ export const TogoWrapper = () => {
 
   useEffect(() => {
     const fetchPlanners = async () => {
-      if (userLoggedIn && currentUser && currentUser.uid) {
+      if (userLoggedIn && currentUser?.uid) {
         try {
           const userPlanners = await getPlannersByUserId(currentUser.uid);
           const formatted = userPlanners.map(planner => ({
@@ -30,11 +30,20 @@ export const TogoWrapper = () => {
         } catch (error) {
           console.error("Помилка завантаження планів:", error);
         }
+      } else {
+        const storedTogos = localStorage.getItem("guest_togos");
+        if (storedTogos) {
+          setTogos(JSON.parse(storedTogos));
+        }
       }
     };
 
     fetchPlanners();
   }, [userLoggedIn, currentUser]);
+
+  const saveToLocalStorage = (newTogos) => {
+    localStorage.setItem("guest_togos", JSON.stringify(newTogos));
+  };
 
   const addTogo = async (taskText) => {
     const tempId = uuidv4();
@@ -44,19 +53,28 @@ export const TogoWrapper = () => {
       completed: false,
       isEditing: false,
     };
-    setTogos(prev => [...prev, newTogo]);
 
-    try {
+    if (userLoggedIn && currentUser?.uid) {
+      setTogos(prev => [...prev, newTogo]);
 
-      const plannerId = await addPlanner(currentUser.uid, { name: taskText, completed: false });
+      try {
+        const plannerId = await addPlanner(currentUser.uid, {
+          name: taskText,
+          completed: false,
+        });
 
-      setTogos(prev =>
-        prev.map(togo =>
-          togo.id === tempId ? { ...togo, id: plannerId } : togo
-        )
-      );
-    } catch (error) {
-      console.error("Помилка при додаванні в Firestore:", error);
+        setTogos(prev =>
+          prev.map(togo =>
+            togo.id === tempId ? { ...togo, id: plannerId } : togo
+          )
+        );
+      } catch (error) {
+        console.error("Помилка при додаванні в Firestore:", error);
+      }
+    } else {
+      const updated = [...togos, newTogo];
+      setTogos(updated);
+      saveToLocalStorage(updated);
     }
   };
 
@@ -66,25 +84,33 @@ export const TogoWrapper = () => {
 
     const newStatus = !togo.completed;
 
-    try {
-      await updatePlanner(id, { completed: newStatus });
-      setTogos(prev =>
-        prev.map(togo =>
-          togo.id === id ? { ...togo, completed: newStatus } : togo
-        )
-      );
-    } catch (error) {
-      console.error("Помилка оновлення статусу:", error);
+    if (userLoggedIn) {
+      try {
+        await updatePlanner(id, { completed: newStatus });
+      } catch (error) {
+        console.error("Помилка оновлення статусу:", error);
+      }
     }
+
+    const updated = togos.map(togo =>
+      togo.id === id ? { ...togo, completed: newStatus } : togo
+    );
+    setTogos(updated);
+    if (!userLoggedIn) saveToLocalStorage(updated);
   };
 
   const deleteTogo = async (id) => {
-    try {
-      await deletePlanner(id);
-      setTogos(prev => prev.filter(togo => togo.id !== id));
-    } catch (error) {
-      console.error("Помилка видалення:", error);
+    if (userLoggedIn) {
+      try {
+        await deletePlanner(id);
+      } catch (error) {
+        console.error("Помилка видалення:", error);
+      }
     }
+
+    const updated = togos.filter(togo => togo.id !== id);
+    setTogos(updated);
+    if (!userLoggedIn) saveToLocalStorage(updated);
   };
 
   const editTogo = (id) => {
@@ -96,16 +122,19 @@ export const TogoWrapper = () => {
   };
 
   const editTask = async (newTaskText, id) => {
-    try {
-      await updatePlanner(id, { name: newTaskText });
-      setTogos(prev =>
-        prev.map(togo =>
-          togo.id === id ? { ...togo, task: newTaskText, isEditing: false } : togo
-        )
-      );
-    } catch (error) {
-      console.error("Помилка оновлення завдання:", error);
+    if (userLoggedIn) {
+      try {
+        await updatePlanner(id, { name: newTaskText });
+      } catch (error) {
+        console.error("Помилка оновлення завдання:", error);
+      }
     }
+
+    const updated = togos.map(togo =>
+      togo.id === id ? { ...togo, task: newTaskText, isEditing: false } : togo
+    );
+    setTogos(updated);
+    if (!userLoggedIn) saveToLocalStorage(updated);
   };
 
   return (

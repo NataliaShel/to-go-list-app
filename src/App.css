@@ -128,7 +128,6 @@ body {
   background-color: #c0392b;
 }
 
-/* Buttons */
 .auth-btn,
 .auth-btn-secondary {
   padding: 12px 24px;
@@ -164,7 +163,6 @@ body {
   background-color: #a0a0a0;
   cursor: not-allowed;
 }
-
 
 .auth-container {
   max-width: 800px;
@@ -215,7 +213,6 @@ body {
 .auth-form input:focus {
   border-color: #2e603f;
 }
-
 
 .TogoWrapper {
   background: #f0faf5;
@@ -303,7 +300,6 @@ body {
   color: #1c2d24;
 }
 
-
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -318,7 +314,6 @@ body {
 .animate-fadeInUp {
   animation: fadeInUp 0.6s ease;
 }
-
 
 @media (max-width: 768px) {
   .navbar-container {
@@ -344,4 +339,108 @@ body {
   .auth-btn {
     text-align: center;
   }
+}
+
+body.dark {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+body.dark .navbar {
+  background-color: #2b2b2b;
+}
+
+body.dark .navbar-link,
+body.dark .auth-btn,
+body.dark .logout-button {
+  background-color: #444;
+  color: #fff;
+}
+
+body.dark .navbar-link:hover,
+body.dark .auth-btn:hover,
+body.dark .logout-button:hover {
+  background-color: #666;
+  color: #fff;
+}
+
+body.dark .auth-card {
+  background-color: #333;
+  color: #fff;
+}
+
+body.dark .TogoWrapper {
+  background-color: #2c2c2c;
+}
+
+body.dark .Togo {
+  background-color: #878585;
+  color: #e0e0e0;
+}
+
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-right: 1rem;
+  color: inherit;
+}
+
+.theme-toggle-btn:hover {
+  opacity: 0.7;
+}
+
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  color: #1e1e1e;
+}
+
+body.dark footer {
+  color: #ffffff;
+}
+
+body.dark footer a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+body.dark footer a:hover {
+  text-decoration: underline;
+}
+
+body.dark .TogoWrapper h1 {
+  color: #ffffff;
+}
+body.dark .togo-btn {
+  background: #000000;
+  color: #fff; 
+}
+
+body.dark .Togo {
+  background: #3a3a3a; 
+  color: #d0d0d0; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+body.dark .Togo:hover {
+  background: #2e3833; 
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8);
+}
+
+body.dark .Togo .completed {
+  color: #878888; 
+  text-decoration: line-through;
+}
+
+body.dark .Togo .incompleted {
+  color: #deedd6; 
+  cursor: pointer;
+}
+
+.Togo:hover {
+  background: #a1dfac; 
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
