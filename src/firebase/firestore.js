@@ -10,7 +10,7 @@ import {
   where,
   getDoc,
 } from 'firebase/firestore';
-import { db } from './firebase'; 
+import { db } from './firebase';
 
 export const getAllUsersData = async () => {
   const usersRef = collection(db, 'users');
@@ -32,15 +32,14 @@ export const getUserDataById = async (uid) => {
     if (userSnap.exists()) {
       return userSnap.data();
     } else {
-      console.warn(` Користувача з ID ${uid} не знайдено`);
+      console.warn(`User with ID ${uid} not found.`);
       return null;
     }
   } catch (error) {
-    console.error(' Помилка при отриманні даних користувача:', error);
+    console.error('Error fetching user data:', error);
     throw error;
   }
 };
-
 
 export const updateUserData = async (uid, data) => {
   const userRef = doc(db, 'users', uid);

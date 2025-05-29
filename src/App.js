@@ -16,7 +16,7 @@ function PrivateRoutes() {
   const { userLoggedIn, loading } = useAuth();
 
   if (loading) {
-    return <div className="loading-spinner">Завантаження...</div>;
+    return <div className="loading-spinner">Loading...</div>;
   }
 
   if (!userLoggedIn) {

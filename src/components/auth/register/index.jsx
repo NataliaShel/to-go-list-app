@@ -24,7 +24,7 @@ const Register = () => {
         setErrorMessage('');
 
         if (password !== confirmPassword) {
-            setErrorMessage('Паролі не співпадають.');
+            setErrorMessage('Passwords do not match.');
             return;
         }
 
@@ -35,7 +35,7 @@ const Register = () => {
             } catch (error) {
                 setIsRegistering(false);
                 setErrorMessage(error.message);
-                console.error("Помилка реєстрації:", error);
+                console.error("Registration error:", error);
             }
         }
     };

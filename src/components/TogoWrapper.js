@@ -28,7 +28,7 @@ export const TogoWrapper = () => {
           }));
           setTogos(formatted);
         } catch (error) {
-          console.error("Помилка завантаження планів:", error);
+          console.error("Error loading plans:", error);
         }
       } else {
         const storedTogos = localStorage.getItem("guest_togos");
@@ -69,7 +69,7 @@ export const TogoWrapper = () => {
           )
         );
       } catch (error) {
-        console.error("Помилка при додаванні в Firestore:", error);
+        console.error("Error adding to Firestore:", error);
       }
     } else {
       const updated = [...togos, newTogo];
@@ -88,7 +88,7 @@ export const TogoWrapper = () => {
       try {
         await updatePlanner(id, { completed: newStatus });
       } catch (error) {
-        console.error("Помилка оновлення статусу:", error);
+        console.error("Error updating status:", error);
       }
     }
 
@@ -104,7 +104,7 @@ export const TogoWrapper = () => {
       try {
         await deletePlanner(id);
       } catch (error) {
-        console.error("Помилка видалення:", error);
+        console.error("Error deleting:", error);
       }
     }
 
@@ -126,7 +126,7 @@ export const TogoWrapper = () => {
       try {
         await updatePlanner(id, { name: newTaskText });
       } catch (error) {
-        console.error("Помилка оновлення завдання:", error);
+        console.error("Error updating task:", error);
       }
     }
 

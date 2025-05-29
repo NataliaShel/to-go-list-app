@@ -1,5 +1,73 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+:root {
+  --primary-bg-color: #447a53;
+  --secondary-bg-color: #f0faf5;
+  --navbar-bg-color: #2e603f;
+  --navbar-text-color: #ffffff;
+  --navbar-brand-hover-color: #95f2ae;
+  --navbar-link-bg-color: #6a9cfc;
+  --navbar-link-hover-bg-color: #3b5e4c;
+  --navbar-link-hover-color: #d0d0d0;
+  --navbar-admin-link-color: #ffcc00;
+  --navbar-admin-link-hover-color: #ffe066;
+  --text-color: #2f4d3c;
+  --heading-color: #3b5e4c;
+  --border-color: #3a9a5c;
+  --input-bg-color: #ffffff;
+  --input-placeholder-color: #364f40;
+  --togo-item-bg-color: #c7e9d3;
+  --togo-item-hover-bg-color: #a1dfac;
+  --togo-item-text-color: #2f4d3c;
+  --completed-text-color: #95b3a2;
+  --togo-btn-bg-color: #2e603f;
+  --togo-btn-hover-bg-color: #88c9a1;
+  --logout-button-bg-color: white;
+  --logout-button-color: #333;
+  --logout-button-hover-bg-color: #d9363e;
+  --logout-button-hover-color: white;
+  --auth-btn-bg-color: #3a9a5c;
+  --auth-btn-hover-bg-color: #2f7d4a;
+  --auth-btn-secondary-bg-color: #007bff;
+  --auth-btn-secondary-hover-bg-color: #0056b3;
+  --icon-color: #1c2d24;
+  --footer-color: #1e1e1e;
+}
+
+body.dark {
+  --primary-bg-color: #1e1e1e;
+  --secondary-bg-color: #333;
+  --navbar-bg-color: #2b2b2b;
+  --navbar-text-color: #f0f0f0;
+  --navbar-brand-hover-color: #95f2ae;
+  --navbar-link-bg-color: #444;
+  --navbar-link-hover-bg-color: #666;
+  --navbar-link-hover-color: #fff;
+  --navbar-admin-link-color: #ffcc00;
+  --navbar-admin-link-hover-color: #ffe066;
+  --text-color: #f0f0f0;
+  --heading-color: #ffffff;
+  --border-color: #555;
+  --input-bg-color: #444;
+  --input-placeholder-color: #bbb;
+  --togo-item-bg-color: #3a3a3a;
+  --togo-item-hover-bg-color: #2e3833;
+  --togo-item-text-color: #d0d0d0;
+  --completed-text-color: #878888;
+  --togo-btn-bg-color: #000000;
+  --togo-btn-hover-bg-color: #333;
+  --logout-button-bg-color: #444;
+  --logout-button-color: #fff;
+  --logout-button-hover-bg-color: #666;
+  --logout-button-hover-color: #fff;
+  --auth-btn-bg-color: #444;
+  --auth-btn-hover-bg-color: #666;
+  --auth-btn-secondary-bg-color: #0056b3;
+  --auth-btn-secondary-hover-bg-color: #003d80;
+  --icon-color: #e0e0e0;
+  --footer-color: #ffffff;
+}
+
 * {
   font-family: 'Poppins', sans-serif;
   margin: 0;
@@ -8,12 +76,13 @@
 }
 
 body {
-  background: #447a53;
+  background: var(--primary-bg-color);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   font-size: 18px; 
+  color: var(--text-color);
 }
 
 .navbar {
@@ -22,8 +91,8 @@ body {
   left: 0;
   width: 100%;
   padding: 1.25rem 2.5rem;
-  background-color: #2e603f;
-  color: white;
+  background-color: var(--navbar-bg-color);
+  color: var(--navbar-text-color);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
@@ -44,12 +113,12 @@ body {
   font-size: 2.2rem;
   font-weight: bold;
   text-decoration: none;
-  color: #ffffff;
+  color: var(--navbar-text-color);
   transition: color 0.3s ease;
 }
 
 .navbar-brand:hover {
-  color: #95f2ae;
+  color: var(--navbar-brand-hover-color);
 }
 
 .navbar-links,
@@ -65,34 +134,34 @@ body {
 }
 
 .navbar-link {
-  color: white;
+  color: var(--navbar-text-color);
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: 500;
   padding: 10px 16px;
   border-radius: 6px;
-  background-color: #6a9cfc;
+  background-color: var(--navbar-link-bg-color);
   transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .navbar-link:hover {
-  color: #d0d0d0;
-  background-color: #3b5e4c;
+  color: var(--navbar-link-hover-color);
+  background-color: var(--navbar-link-hover-bg-color);
 }
 
 .navbar-admin-link {
   font-weight: bold;
-  color: #ffcc00;
+  color: var(--navbar-admin-link-color);
 }
 
 .navbar-admin-link:hover {
-  color: #ffe066;
+  color: var(--navbar-admin-link-hover-color);
 }
 
 .navbar-user,
 .navbar-user-info {
   font-size: 1.1rem;
-  color: white;
+  color: var(--navbar-text-color);
   margin-right: 10px;
 }
 
@@ -105,16 +174,15 @@ body {
   cursor: pointer;
   font-size: 1.1rem;
   transition: background-color 0.3s ease;
+  background-color: var(--logout-button-bg-color);
+  color: var(--logout-button-color);
 }
 
-.logout-button {
-  background-color: white;
-  color: #333;
-}
-
-.logout-button:hover {
-  background-color: #d9363e;
-  color: white;
+.logout-button:hover,
+.logout-btn:hover,
+.navbar-logout-btn:hover {
+  background-color: var(--logout-button-hover-bg-color);
+  color: var(--logout-button-hover-color);
 }
 
 .logout-btn,
@@ -127,6 +195,7 @@ body {
 .navbar-logout-btn:hover {
   background-color: #c0392b;
 }
+
 
 .auth-btn,
 .auth-btn-secondary {
@@ -142,21 +211,21 @@ body {
 }
 
 .auth-btn {
-  background-color: #3a9a5c;
+  background-color: var(--auth-btn-bg-color);
   color: white;
 }
 
 .auth-btn:hover {
-  background-color: #2f7d4a;
+  background-color: var(--auth-btn-hover-bg-color);
 }
 
 .auth-btn-secondary {
-  background-color: #007bff;
+  background-color: var(--auth-btn-secondary-bg-color);
   color: white;
 }
 
 .auth-btn-secondary:hover {
-  background-color: #0056b3;
+  background-color: var(--auth-btn-secondary-hover-bg-color);
 }
 
 .auth-btn:disabled {
@@ -170,7 +239,7 @@ body {
 }
 
 .auth-card {
-  background-color: #f0faf5;
+  background-color: var(--secondary-bg-color);
   padding: 2.5rem;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(59, 127, 61, 0.1);
@@ -178,11 +247,12 @@ body {
   width: 100%;
   max-width: 460px;
   animation: fadeInUp 0.6s ease;
+  color: var(--text-color);
 }
 
 .auth-card h2 {
   margin-bottom: 1.5rem;
-  color: #3b5e4c;
+  color: var(--heading-color);
   font-size: 2rem;
 }
 
@@ -195,27 +265,27 @@ body {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: bold;
-  color: #2f4d3c;
+  color: var(--text-color);
 }
 
 .auth-form input {
   width: 100%;
   padding: 0.75rem 1.25rem;
-  border: 1px solid #3a9a5c;
+  border: 1px solid var(--border-color);
   border-radius: 5px;
   font-size: 1.1rem;
-  color: #2f4d3c;
-  background: #ffffff;
+  color: var(--text-color);
+  background: var(--input-bg-color);
   outline: none;
   transition: border-color 0.3s ease;
 }
 
 .auth-form input:focus {
-  border-color: #2e603f;
+  border-color: var(--navbar-bg-color);
 }
 
 .TogoWrapper {
-  background: #f0faf5;
+  background: var(--secondary-bg-color);
   margin-top: 6rem;
   padding: 2.5rem;
   border-radius: 10px;
@@ -223,7 +293,7 @@ body {
 }
 
 .TogoWrapper h1 {
-  color: #2e603f; 
+  color: var(--heading-color); 
   font-size: 2.2rem;
   margin-bottom: 1.5rem;
   text-align: center;
@@ -239,22 +309,22 @@ body {
 
 .togo-input {
   outline: none;
-  background: #ffffff;
-  border: 1px solid #3a9a5c;
+  background: var(--input-bg-color);
+  border: 1px solid var(--border-color);
   padding: 0.75rem 1.25rem;
   width: 300px;
-  color: #2f4d3c;
+  color: var(--text-color);
   border-radius: 5px 0 0 5px;
   font-size: 1.1rem;
 }
 
 .togo-input::placeholder {
-  color: #364f40;
+  color: var(--input-placeholder-color);
 }
 
 .togo-btn {
-  background: #2e603f;
-  color: #fff;
+  background: var(--togo-btn-bg-color);
+  color: var(--navbar-text-color);
   border: none;
   padding: 0.75rem 1.25rem;
   cursor: pointer;
@@ -264,19 +334,20 @@ body {
 }
 
 .togo-btn:hover {
-  background: #88c9a1;
+  background: var(--togo-btn-hover-bg-color);
 }
 
 .Togo {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #c7e9d3;
-  color: #2f4d3c;
+  background: var(--togo-item-bg-color);
+  color: var(--togo-item-text-color);
   padding: 1rem 1.25rem;
   border-radius: 5px;
   margin-bottom: 1rem;
   font-size: 1.1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .fa-trash {
@@ -284,12 +355,12 @@ body {
 }
 
 .incompleted {
-  color: #2f4d3c;
+  color: var(--togo-item-text-color);
   cursor: pointer;
 }
 
 .completed {
-  color: #95b3a2;
+  color: var(--completed-text-color);
   text-decoration: line-through;
   cursor: pointer;
 }
@@ -297,7 +368,7 @@ body {
 .edit-icon,
 .delete-icon {
   cursor: pointer;
-  color: #1c2d24;
+  color: var(--icon-color);
 }
 
 @keyframes fadeInUp {
@@ -341,43 +412,6 @@ body {
   }
 }
 
-body.dark {
-  background-color: #1e1e1e;
-  color: #f0f0f0;
-}
-
-body.dark .navbar {
-  background-color: #2b2b2b;
-}
-
-body.dark .navbar-link,
-body.dark .auth-btn,
-body.dark .logout-button {
-  background-color: #444;
-  color: #fff;
-}
-
-body.dark .navbar-link:hover,
-body.dark .auth-btn:hover,
-body.dark .logout-button:hover {
-  background-color: #666;
-  color: #fff;
-}
-
-body.dark .auth-card {
-  background-color: #333;
-  color: #fff;
-}
-
-body.dark .TogoWrapper {
-  background-color: #2c2c2c;
-}
-
-body.dark .Togo {
-  background-color: #878585;
-  color: #e0e0e0;
-}
-
 .theme-toggle-btn {
   background: none;
   border: none;
@@ -394,53 +428,28 @@ body.dark .Togo {
 footer {
   text-align: center;
   margin-top: 3rem;
-  color: #1e1e1e;
+  color: var(--footer-color);
 }
 
-body.dark footer {
-  color: #ffffff;
-}
-
-body.dark footer a {
-  color: #ffffff;
+footer a {
+  color: var(--footer-color);
   text-decoration: none;
 }
 
-body.dark footer a:hover {
+footer a:hover {
   text-decoration: underline;
 }
 
-body.dark .TogoWrapper h1 {
-  color: #ffffff;
-}
-body.dark .togo-btn {
-  background: #000000;
-  color: #fff; 
-}
-
 body.dark .Togo {
-  background: #3a3a3a; 
-  color: #d0d0d0; 
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-body.dark .Togo:hover {
-  background: #2e3833; 
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8);
-}
-
-body.dark .Togo .completed {
-  color: #878888; 
-  text-decoration: line-through;
-}
-
-body.dark .Togo .incompleted {
-  color: #deedd6; 
-  cursor: pointer;
-}
-
 .Togo:hover {
-  background: #a1dfac; 
+  background: var(--togo-item-hover-bg-color); 
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark .Togo:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8);
 }

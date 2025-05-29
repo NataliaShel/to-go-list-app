@@ -9,9 +9,16 @@ const FetchUserPlansButton = () => {
   const fetchPlans = async () => {
     setLoading(true);
     try {
+      const userId = "YOUR_CURRENT_USER_ID"; 
+
+      if (!userId) {
+        console.error("User not authenticated. Cannot fetch plans.");
+        setLoading(false);
+        return;
+      }
 
       const plansRef = collection(db, 'plans');
-      const q = query(plansRef, where('userId', '==', user.uid));
+      const q = query(plansRef, where('userId', '==', userId));
       const querySnapshot = await getDocs(q);
 
       const fetchedPlans = querySnapshot.docs.map(doc => ({
@@ -21,7 +28,7 @@ const FetchUserPlansButton = () => {
 
       setPlans(fetchedPlans);
     } catch (error) {
-      console.error("Помилка при отриманні планів:", error);
+      console.error("Error fetching plans:", error);
     } finally {
       setLoading(false);
     }
@@ -30,7 +37,7 @@ const FetchUserPlansButton = () => {
   return (
     <div>
       <button onClick={fetchPlans} disabled={loading}>
-        {loading ? 'Завантаження...' : 'Отримати мої плани'}
+        {loading ? 'Loading...' : 'Fetch My Plans'}
       </button>
       <ul>
         {plans.map(plan => (
