@@ -30,7 +30,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <Link to="/" className="navbar-brand">TO GO LIST</Link>
+        <Link to="/" className="navbar-brand">TO DO LIST</Link>
 
         <div className="navbar-links">
           <button onClick={toggleTheme} className="theme-toggle-btn">

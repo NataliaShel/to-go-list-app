@@ -1,455 +1,598 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 :root {
-  --primary-bg-color: #447a53;
-  --secondary-bg-color: #f0faf5;
-  --navbar-bg-color: #2e603f;
-  --navbar-text-color: #ffffff;
-  --navbar-brand-hover-color: #95f2ae;
-  --navbar-link-bg-color: #6a9cfc;
-  --navbar-link-hover-bg-color: #3b5e4c;
-  --navbar-link-hover-color: #d0d0d0;
-  --navbar-admin-link-color: #ffcc00;
-  --navbar-admin-link-hover-color: #ffe066;
-  --text-color: #2f4d3c;
-  --heading-color: #3b5e4c;
-  --border-color: #3a9a5c;
-  --input-bg-color: #ffffff;
-  --input-placeholder-color: #364f40;
-  --togo-item-bg-color: #c7e9d3;
-  --togo-item-hover-bg-color: #a1dfac;
-  --togo-item-text-color: #2f4d3c;
-  --completed-text-color: #95b3a2;
-  --togo-btn-bg-color: #2e603f;
-  --togo-btn-hover-bg-color: #88c9a1;
-  --logout-button-bg-color: white;
-  --logout-button-color: #333;
-  --logout-button-hover-bg-color: #d9363e;
-  --logout-button-hover-color: white;
-  --auth-btn-bg-color: #3a9a5c;
-  --auth-btn-hover-bg-color: #2f7d4a;
-  --auth-btn-secondary-bg-color: #007bff;
-  --auth-btn-secondary-hover-bg-color: #0056b3;
-  --icon-color: #1c2d24;
-  --footer-color: #1e1e1e;
+    --primary-bg-color: #447a53;
+    --secondary-bg-color: #f0faf5;
+    --navbar-bg-color: #2e603f;
+    --navbar-text-color: #ffffff;
+    --navbar-brand-hover-color: #95f2ae;
+    --navbar-link-bg-color: #6a9cfc;
+    --navbar-link-hover-bg-color: #3b5e4c;
+    --navbar-link-hover-color: #d0d0d0;
+    --navbar-admin-link-color: #ffcc00;
+    --navbar-admin-link-hover-color: #ffe066;
+    --text-color: #2f4d3c;
+    --heading-color: #3b5e4c;
+    --border-color: #3a9a5c;
+    --input-bg-color: #ffffff;
+    --input-placeholder-color: #364f40;
+    --togo-item-bg-color: #c7e9d3;
+    --togo-item-hover-bg-color: #a1dfac;
+    --togo-item-text-color: #2f4d3c;
+    --completed-text-color: #95b3a2;
+    --togo-btn-bg-color: #2e603f;
+    --togo-btn-hover-bg-color: #88c9a1;
+    --logout-button-bg-color: white;
+    --logout-button-color: #333;
+    --logout-button-hover-bg-color: #d9363e;
+    --logout-button-hover-color: white;
+    --auth-btn-bg-color: #3a9a5c;
+    --auth-btn-hover-bg-color: #2f7d4a;
+    --auth-btn-secondary-bg-color: #007bff;
+    --auth-btn-secondary-hover-bg-color: #0056b3;
+    --icon-color: #1c2d24;
+    --footer-color: #1e1e1e;
 }
 
 body.dark {
-  --primary-bg-color: #1e1e1e;
-  --secondary-bg-color: #333;
-  --navbar-bg-color: #2b2b2b;
-  --navbar-text-color: #f0f0f0;
-  --navbar-brand-hover-color: #95f2ae;
-  --navbar-link-bg-color: #444;
-  --navbar-link-hover-bg-color: #666;
-  --navbar-link-hover-color: #fff;
-  --navbar-admin-link-color: #ffcc00;
-  --navbar-admin-link-hover-color: #ffe066;
-  --text-color: #f0f0f0;
-  --heading-color: #ffffff;
-  --border-color: #555;
-  --input-bg-color: #444;
-  --input-placeholder-color: #bbb;
-  --togo-item-bg-color: #3a3a3a;
-  --togo-item-hover-bg-color: #2e3833;
-  --togo-item-text-color: #d0d0d0;
-  --completed-text-color: #878888;
-  --togo-btn-bg-color: #000000;
-  --togo-btn-hover-bg-color: #333;
-  --logout-button-bg-color: #444;
-  --logout-button-color: #fff;
-  --logout-button-hover-bg-color: #666;
-  --logout-button-hover-color: #fff;
-  --auth-btn-bg-color: #444;
-  --auth-btn-hover-bg-color: #666;
-  --auth-btn-secondary-bg-color: #0056b3;
-  --auth-btn-secondary-hover-bg-color: #003d80;
-  --icon-color: #e0e0e0;
-  --footer-color: #ffffff;
+    --primary-bg-color: #1e1e1e;
+    --secondary-bg-color: #333;
+    --navbar-bg-color: #2b2b2b;
+    --navbar-text-color: #f0f0f0;
+    --navbar-brand-hover-color: #95f2ae;
+    --navbar-link-bg-color: #444;
+    --navbar-link-hover-bg-color: #666;
+    --navbar-link-hover-color: #fff;
+    --navbar-admin-link-color: #ffcc00;
+    --navbar-admin-link-hover-color: #ffe066;
+    --text-color: #f0f0f0;
+    --heading-color: #ffffff;
+    --border-color: #555;
+    --input-bg-color: #444;
+    --input-placeholder-color: #bbb;
+    --togo-item-bg-color: #3a3a3a;
+    --togo-item-hover-bg-color: #2e3833;
+    --togo-item-text-color: #d0d0d0;
+    --completed-text-color: #878888;
+    --togo-btn-bg-color: #000000;
+    --togo-btn-hover-bg-color: #333;
+    --logout-button-bg-color: #444;
+    --logout-button-color: #fff;
+    --logout-button-hover-bg-color: #666;
+    --logout-button-hover-color: #fff;
+    --auth-btn-bg-color: #444;
+    --auth-btn-hover-bg-color: #666;
+    --auth-btn-secondary-bg-color: #0056b3;
+    --auth-btn-secondary-hover-bg-color: #003d80;
+    --icon-color: #e0e0e0;
+    --footer-color: #ffffff;
 }
 
 * {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background: var(--primary-bg-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  font-size: 18px; 
-  color: var(--text-color);
+    background: var(--primary-bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-size: 18px;
+    color: var(--text-color);
+    padding-top: 72px;
+    flex-direction: column;
 }
 
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 1.25rem 2.5rem;
-  background-color: var(--navbar-bg-color);
-  color: var(--navbar-text-color);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.25rem 2.5rem;
+    background-color: var(--navbar-bg-color);
+    color: var(--navbar-text-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
 }
 
 .navbar-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
 }
 
 .navbar-brand {
-  font-size: 2.2rem;
-  font-weight: bold;
-  text-decoration: none;
-  color: var(--navbar-text-color);
-  transition: color 0.3s ease;
+    font-size: 2.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--navbar-text-color);
+    transition: color 0.3s ease;
 }
 
 .navbar-brand:hover {
-  color: var(--navbar-brand-hover-color);
+    color: var(--navbar-brand-hover-color);
 }
 
 .navbar-links,
 .navbar-links-group {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-  margin-left: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-left: 3rem;
+    list-style: none;
 }
 
 .navbar-links-group {
-  gap: 25px;
+    gap: 25px;
 }
 
 .navbar-link {
-  color: var(--navbar-text-color);
-  text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: 500;
-  padding: 10px 16px;
-  border-radius: 6px;
-  background-color: var(--navbar-link-bg-color);
-  transition: color 0.3s ease, background-color 0.3s ease;
+    color: var(--navbar-text-color);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 10px 16px;
+    border-radius: 6px;
+    background-color: var(--navbar-link-bg-color);
+    transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .navbar-link:hover {
-  color: var(--navbar-link-hover-color);
-  background-color: var(--navbar-link-hover-bg-color);
+    color: var(--navbar-link-hover-color);
+    background-color: var(--navbar-link-hover-bg-color);
 }
 
 .navbar-admin-link {
-  font-weight: bold;
-  color: var(--navbar-admin-link-color);
+    font-weight: bold;
+    color: var(--navbar-admin-link-color);
 }
 
 .navbar-admin-link:hover {
-  color: var(--navbar-admin-link-hover-color);
+    color: var(--navbar-admin-link-hover-color);
 }
 
 .navbar-user,
 .navbar-user-info {
-  font-size: 1.1rem;
-  color: var(--navbar-text-color);
-  margin-right: 10px;
+    font-size: 1.1rem;
+    color: var(--navbar-text-color);
+    margin-right: 10px;
 }
 
 .logout-button,
 .logout-btn,
 .navbar-logout-btn {
-  padding: 12px 24px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  transition: background-color 0.3s ease;
-  background-color: var(--logout-button-bg-color);
-  color: var(--logout-button-color);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+    background-color: var(--logout-button-bg-color);
+    color: var(--logout-button-color);
 }
 
 .logout-button:hover,
 .logout-btn:hover,
 .navbar-logout-btn:hover {
-  background-color: var(--logout-button-hover-bg-color);
-  color: var(--logout-button-hover-color);
+    background-color: var(--logout-button-hover-bg-color);
+    color: var(--logout-button-hover-color);
 }
 
 .logout-btn,
 .navbar-logout-btn {
-  background-color: #e74c3c;
-  color: white;
+    background-color: #e74c3c;
+    color: white;
 }
 
 .logout-btn:hover,
 .navbar-logout-btn:hover {
-  background-color: #c0392b;
+    background-color: #c0392b;
 }
-
 
 .auth-btn,
 .auth-btn-secondary {
-  padding: 12px 24px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  text-decoration: none;
-  display: inline-block;
-  text-align: center;
-  transition: background-color 0.3s ease;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: background-color 0.3s ease;
 }
 
 .auth-btn {
-  background-color: var(--auth-btn-bg-color);
-  color: white;
+    background-color: var(--auth-btn-bg-color);
+    color: white;
 }
 
 .auth-btn:hover {
-  background-color: var(--auth-btn-hover-bg-color);
+    background-color: var(--auth-btn-hover-bg-color);
 }
 
 .auth-btn-secondary {
-  background-color: var(--auth-btn-secondary-bg-color);
-  color: white;
+    background-color: var(--auth-btn-secondary-bg-color);
+    color: white;
 }
 
 .auth-btn-secondary:hover {
-  background-color: var(--auth-btn-secondary-hover-bg-color);
+    background-color: var(--auth-btn-secondary-hover-bg-color);
 }
 
 .auth-btn:disabled {
-  background-color: #a0a0a0;
-  cursor: not-allowed;
+    background-color: #a0a0a0;
+    cursor: not-allowed;
 }
 
 .auth-container {
-  max-width: 800px;
-  margin: 0 auto;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .auth-card {
-  background-color: var(--secondary-bg-color);
-  padding: 2.5rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(59, 127, 61, 0.1);
-  text-align: center;
-  width: 100%;
-  max-width: 460px;
-  animation: fadeInUp 0.6s ease;
-  color: var(--text-color);
+    background-color: var(--secondary-bg-color);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(59, 127, 61, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 460px;
+    animation: fadeInUp 0.6s ease;
+    color: var(--text-color);
+    margin-top: 30px;
 }
 
 .auth-card h2 {
-  margin-bottom: 1.5rem;
-  color: var(--heading-color);
-  font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--heading-color);
+    font-size: 2rem;
 }
 
 .auth-form .form-group {
-  margin-bottom: 1rem;
-  text-align: left;
+    margin-bottom: 1rem;
+    text-align: left;
 }
 
 .auth-form label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-  color: var(--text-color);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--text-color);
 }
 
 .auth-form input {
-  width: 100%;
-  padding: 0.75rem 1.25rem;
-  border: 1px solid var(--border-color);
-  border-radius: 5px;
-  font-size: 1.1rem;
-  color: var(--text-color);
-  background: var(--input-bg-color);
-  outline: none;
-  transition: border-color 0.3s ease;
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    background: var(--input-bg-color);
+    outline: none;
+    transition: border-color 0.3s ease;
 }
 
 .auth-form input:focus {
-  border-color: var(--navbar-bg-color);
+    border-color: var(--navbar-bg-color);
+}
+
+input[type="text"] {
+    background-color: var(--input-bg-color);
+    color: var(--text-color);
+}
+
+textarea {
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    background: var(--input-bg-color);
+    outline: none;
+    transition: border-color 0.3s ease;
+    resize: vertical;
+}
+
+select {
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    background: var(--input-bg-color);
+    outline: none;
 }
 
 .TogoWrapper {
-  background: var(--secondary-bg-color);
-  margin-top: 6rem;
-  padding: 2.5rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    background: var(--secondary-bg-color);
+    margin-top: 6rem;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    max-width: 600px;
+    width: 100%;
 }
 
 .TogoWrapper h1 {
-  color: var(--heading-color); 
-  font-size: 2.2rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
+    color: var(--heading-color);
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
 }
 
 .TogoForm {
-  width: 100%;
-  margin-bottom: 1.25rem;
-  display: flex;
-  justify-content: center;
-  gap: 0.75rem;
+    width: 100%;
+    margin-bottom: 1.25rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
 }
 
 .togo-input {
-  outline: none;
-  background: var(--input-bg-color);
-  border: 1px solid var(--border-color);
-  padding: 0.75rem 1.25rem;
-  width: 300px;
-  color: var(--text-color);
-  border-radius: 5px 0 0 5px;
-  font-size: 1.1rem;
+    outline: none;
+    background: var(--input-bg-color);
+    border: 1px solid var(--border-color);
+    padding: 0.75rem 1.25rem;
+    width: 300px;
+    color: var(--text-color);
+    border-radius: 5px 0 0 5px;
+    font-size: 1.1rem;
 }
 
 .togo-input::placeholder {
-  color: var(--input-placeholder-color);
+    color: var(--input-placeholder-color);
 }
 
 .togo-btn {
-  background: var(--togo-btn-bg-color);
-  color: var(--navbar-text-color);
-  border: none;
-  padding: 0.75rem 1.25rem;
-  cursor: pointer;
-  border-radius: 0 5px 5px 0;
-  font-size: 1.1rem;
-  transition: background 0.3s ease;
+    background: var(--togo-btn-bg-color);
+    color: var(--navbar-text-color);
+    border: none;
+    padding: 0.75rem 1.25rem;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+    font-size: 1.1rem;
+    transition: background 0.3s ease;
 }
 
 .togo-btn:hover {
-  background: var(--togo-btn-hover-bg-color);
+    background: var(--togo-btn-hover-bg-color);
 }
 
 .Togo {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--togo-item-bg-color);
-  color: var(--togo-item-text-color);
-  padding: 1rem 1.25rem;
-  border-radius: 5px;
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--togo-item-bg-color);
+    color: var(--togo-item-text-color);
+    padding: 1rem 1.25rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.Togo:hover {
+    background: var(--togo-item-hover-bg-color);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .Togo:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8);
 }
 
 .fa-trash {
-  margin-left: 0.75rem;
+    margin-left: 0.75rem;
 }
 
 .incompleted {
-  color: var(--togo-item-text-color);
-  cursor: pointer;
+    color: var(--togo-item-text-color);
+    cursor: pointer;
 }
 
 .completed {
-  color: var(--completed-text-color);
-  text-decoration: line-through;
-  cursor: pointer;
+    color: var(--completed-text-color); 
+    text-decoration: line-through; 
+    cursor: pointer;
+    opacity: 0.6; 
+    transition: opacity 0.3s ease; 
 }
 
 .edit-icon,
 .delete-icon {
-  cursor: pointer;
-  color: var(--icon-color);
+    cursor: pointer;
+    color: var(--icon-color);
 }
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .animate-fadeInUp {
-  animation: fadeInUp 0.6s ease;
+    animation: fadeInUp 0.6s ease;
 }
 
 @media (max-width: 768px) {
-  .navbar-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+    .navbar-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-  .navbar-links-group {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    margin-top: 15px;
-  }
+    .navbar-links-group {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        margin-top: 15px;
+    }
 
-  .navbar-link,
-  .navbar-user-info,
-  .auth-btn {
-    width: 100%;
-    text-align: left;
-    padding: 12px 0;
-  }
+    .navbar-link,
+    .navbar-user-info,
+    .auth-btn {
+        width: 100%;
+        text-align: left;
+        padding: 12px 0;
+    }
 
-  .auth-btn {
-    text-align: center;
-  }
+    .auth-btn {
+        text-align: center;
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+    .togo-input {
+        width: 100%;
+        border-radius: 5px;
+    }
+
+    .togo-btn {
+        width: 100%;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+
+    .TogoForm {
+        flex-direction: column;
+    }
 }
 
 .theme-toggle-btn {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  margin-right: 1rem;
-  color: inherit;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-right: 1rem;
+    color: inherit;
 }
 
 .theme-toggle-btn:hover {
-  opacity: 0.7;
+    opacity: 0.7;
 }
 
 footer {
-  text-align: center;
-  margin-top: 3rem;
-  color: var(--footer-color);
+    text-align: center;
+    margin-top: 3rem;
+    color: var(--footer-color);
+    width: 100%;
+    padding: 20px 0;
 }
 
 footer a {
-  color: var(--footer-color);
-  text-decoration: none;
+    color: var(--footer-color);
+    text-decoration: none;
 }
 
 footer a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 body.dark .Togo {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-.Togo:hover {
-  background: var(--togo-item-hover-bg-color); 
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 body.dark .Togo:hover {
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8);
+}
+
+.float-left-image {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    max-width: 200px;
+    height: auto;
+    border: 2px solid var(--border-color);
+}
+
+.float-right-block {
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    padding: 15px;
+    background-color: var(--togo-item-bg-color);
+    border-radius: 8px;
+    max-width: 300px;
+}
+
+.clear-floats {
+    clear: both;
+}
+
+p::first-line {
+    font-weight: bold;
+    color: var(--heading-color);
+}
+
+#unique-section {
+    background-color: var(--input-bg-color);
+    padding: 2rem;
+    margin-top: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px dashed var(--border-color);
+}
+
+.content-section > h3 {
+    color: var(--navbar-admin-link-color);
+    margin-bottom: 1rem;
+}
+
+[data-type="highlight"] {
+    background-color: yellow;
+    color: black;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    background-color: var(--input-bg-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    border: 1px solid var(--border-color);
+    padding: 12px 15px;
+    text-align: left;
+    color: var(--text-color);
+}
+
+th {
+    background-color: var(--navbar-bg-color);
+    color: var(--navbar-text-color);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+    background-color: var(--togo-item-bg-color);
+}
+
+tr:hover {
+    background-color: var(--togo-item-hover-bg-color);
 }
